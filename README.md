@@ -43,15 +43,26 @@ Use Bruno's **Fetch Collection** or Git import option with:
 https://github.com/cargosynq/cargosynq-api.git
 ```
 
-## Configure authentication
+## Authenticate
 
-All APIs use the shared `token` environment variable.
+The collection can sign in through the same Cognito flow used by CargoSynq:
 
-1. Open the `development` environment in Bruno.
-2. Set `token` to a valid Cognito access token.
-3. Enter only the token value. Do not add the `Bearer` prefix; requests add it through their bearer-auth configuration.
+1. Select the `development` environment.
+2. Open `Authentication/Login`.
+3. Select **Send**.
+4. Enter your CargoSynq email and password in Bruno's prompt.
 
-The variable is marked as secret and its value must never be committed. If Bruno offers to save a real token into a tracked file, decline or reset the value before committing.
+The login request stores the returned `token`, `idToken`, and `refreshToken` in Bruno memory. All API requests use the shared `token` variable automatically.
+
+Credentials and returned tokens are not persisted to the environment file. They disappear when the Bruno session ends. Never change the authentication scripts to use `{ persist: true }`, and never commit real credentials or tokens.
+
+When the access token expires, run `Authentication/Refresh Token`. If the refresh token is no longer valid, run `Authentication/Login` again.
+
+The login request is interactive and is skipped by Bruno CLI or Collection Runner executions. For non-interactive automation, provide tokens through an approved secret-management mechanism rather than committing them.
+
+### Manual token fallback
+
+You can still set `token` manually in the `development` environment. Enter only the token value—do not add the `Bearer` prefix, because requests add it through their bearer-auth configuration.
 
 ## Configure request variables
 
@@ -117,6 +128,7 @@ cargosynq-api/
 ├── opencollection.yml
 ├── environments/
 │   └── development.yml
+├── Authentication/
 ├── Follow Up/
 ├── Shipments/
 ├── WMS/

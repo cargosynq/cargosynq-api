@@ -15,6 +15,31 @@ variables:
     enabled: true
     secret: true
     type: text
+  - name: idToken
+    value: ""
+    enabled: true
+    secret: true
+    type: text
+  - name: refreshToken
+    value: ""
+    enabled: true
+    secret: true
+    type: text
+  - name: tokenExpiresAt
+    value: ""
+    enabled: true
+    secret: false
+    type: text
+  - name: cognitoEndpoint
+    value: https://cognito-idp.eu-central-1.amazonaws.com/
+    enabled: true
+    secret: false
+    type: text
+  - name: cognitoClientId
+    value: 3glld83ivetph69pmbpd8bngjd
+    enabled: true
+    secret: false
+    type: text
   - name: receiptId
     value: "1"
     enabled: true

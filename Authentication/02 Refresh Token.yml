@@ -1,0 +1,60 @@
+info:
+  name: Refresh Token
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{cognitoEndpoint}}"
+  headers:
+    - name: Content-Type
+      value: application/x-amz-json-1.1
+    - name: X-Amz-Target
+      value: AWSCognitoIdentityProviderService.InitiateAuth
+  body:
+    type: json
+    data: |-
+      {
+        "AuthFlow": "REFRESH_TOKEN_AUTH",
+        "ClientId": "{{cognitoClientId}}",
+        "AuthParameters": {
+          "REFRESH_TOKEN": "{{refreshToken}}"
+        }
+      }
+  auth: none
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const body = res.getBody();
+        const authentication = body?.AuthenticationResult;
+
+        if (!authentication?.AccessToken) {
+          throw new Error(
+            "Token refresh did not return an access token. Run Authentication/Login again."
+          );
+        }
+
+        bru.setEnvVar("token", authentication.AccessToken);
+
+        if (authentication.IdToken) {
+          bru.setEnvVar("idToken", authentication.IdToken);
+        }
+
+        if (authentication.ExpiresIn) {
+          bru.setEnvVar(
+            "tokenExpiresAt",
+            String(Date.now() + Number(authentication.ExpiresIn) * 1000)
+          );
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Exchanges the in-memory refresh token for a new CargoSynq access token.
+  Run Authentication/Login first to populate refreshToken.

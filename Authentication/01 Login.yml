@@ -1,0 +1,67 @@
+info:
+  name: Login
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{cognitoEndpoint}}"
+  headers:
+    - name: Content-Type
+      value: application/x-amz-json-1.1
+    - name: X-Amz-Target
+      value: AWSCognitoIdentityProviderService.InitiateAuth
+  body:
+    type: json
+    data: |-
+      {
+        "AuthFlow": "USER_PASSWORD_AUTH",
+        "ClientId": "{{cognitoClientId}}",
+        "AuthParameters": {
+          "USERNAME": "{{?CargoSynq email}}",
+          "PASSWORD": "{{?CargoSynq password}}"
+        }
+      }
+  auth: none
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const body = res.getBody();
+        const authentication = body?.AuthenticationResult;
+
+        if (!authentication?.AccessToken) {
+          const challenge = body?.ChallengeName
+            ? ` Cognito returned challenge: ${body.ChallengeName}.`
+            : "";
+          throw new Error(`CargoSynq login did not return an access token.${challenge}`);
+        }
+
+        bru.setEnvVar("token", authentication.AccessToken);
+
+        if (authentication.IdToken) {
+          bru.setEnvVar("idToken", authentication.IdToken);
+        }
+
+        if (authentication.RefreshToken) {
+          bru.setEnvVar("refreshToken", authentication.RefreshToken);
+        }
+
+        if (authentication.ExpiresIn) {
+          bru.setEnvVar(
+            "tokenExpiresAt",
+            String(Date.now() + Number(authentication.ExpiresIn) * 1000)
+          );
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Prompts for CargoSynq credentials and signs in through the development Cognito user pool.
+  Access, ID, and refresh tokens are stored in Bruno memory only and are not written to disk.
+  Run this request before calling an authenticated API.
