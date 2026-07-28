@@ -1,0 +1,42 @@
+info:
+  name: Create Unit Documents
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{shipmentsEndpoint}}/shipments_units_documents"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "shipmentsunitsid": {{shipmentUnitId}},
+        "originalfilename": "unit-document.pdf",
+        "storagebucket": "cargosynq-documents",
+        "storagekey": "shipments/units/unit-document.pdf",
+        "storageurl": "https://example.invalid/unit-document.pdf",
+        "size": 1024,
+        "mimetype": "application/pdf",
+        "md5hash": "replace-with-md5-hash",
+        "isdeleted": false,
+        "documenttype": "COMMERCIAL_INVOICE"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /shipments_units_documents
+  Defined by the cq-backend Shipments module.

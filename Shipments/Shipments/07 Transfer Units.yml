@@ -1,0 +1,37 @@
+info:
+  name: Transfer Units
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{shipmentsEndpoint}}/shipments/{{shipmentId}}/transfer-units"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "shipments_units": [
+          {
+            "id": {{shipmentUnitId}}
+          }
+        ]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /shipments/{id}/transfer-units
+  Defined by the cq-backend Shipments module.

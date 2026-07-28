@@ -1,0 +1,35 @@
+info:
+  name: Create Businesses
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{shipmentsEndpoint}}/shipments_businesses"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "shipmentsid": {{shipmentId}},
+        "businessesid": {{businessId}},
+        "businesstype": "SHIPPER"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /shipments_businesses
+  Defined by the cq-backend Shipments module.

@@ -1,0 +1,34 @@
+info:
+  name: Update Line Items
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{shipmentsEndpoint}}/shipments_lineitems/{{shipmentLineItemId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "quantity": 120,
+        "unitcost": 24
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  PATCH /shipments_lineitems/{id}
+  Defined by the cq-backend Shipments module.

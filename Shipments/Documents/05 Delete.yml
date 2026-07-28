@@ -1,0 +1,21 @@
+info:
+  name: Delete Documents
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{shipmentsEndpoint}}/shipments_documents/{{shipmentDocumentId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  DELETE /shipments_documents/{id}
+  Defined by the cq-backend Shipments module.

@@ -1,0 +1,33 @@
+info:
+  name: Update Documents
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{shipmentsEndpoint}}/shipments_documents/{{shipmentDocumentId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "documenttype": "MASTER_BILL"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  PATCH /shipments_documents/{id}
+  Defined by the cq-backend Shipments module.

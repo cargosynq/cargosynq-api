@@ -1,0 +1,41 @@
+info:
+  name: Create Line Items
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{shipmentsEndpoint}}/shipments_lineitems"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "shipmentsid": {{shipmentId}},
+        "orderslineitemsid": {{lineItemId}},
+        "description": "Widget A - Blue",
+        "quantity": 100,
+        "unitofmeasurement": "pcs",
+        "unitcost": 25.5,
+        "currency": "USD",
+        "hscode": "8471.30.01",
+        "countryoforigin": "CHN"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /shipments_lineitems
+  Defined by the cq-backend Shipments module.

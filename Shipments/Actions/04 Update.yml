@@ -1,0 +1,33 @@
+info:
+  name: Update Actions
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{shipmentsEndpoint}}/shipments_actions/{{shipmentActionId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Updated shipment action"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  PATCH /shipments_actions/{id}
+  Defined by the cq-backend Shipments module.

@@ -1,0 +1,34 @@
+info:
+  name: Update Warehouse Receipts
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{shipmentsEndpoint}}/warehouse_receipts/{{warehouseReceiptId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "status": "RESERVED",
+        "releasedshipmentsid": {{targetShipmentId}}
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  PATCH /warehouse_receipts/{id}
+  Defined by the cq-backend Shipments module.

@@ -1,0 +1,21 @@
+info:
+  name: Get Unit Transfers
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{shipmentsEndpoint}}/shipments_units_transfers/{{shipmentUnitTransferId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  GET /shipments_units_transfers/{id}
+  Defined by the cq-backend Shipments module.

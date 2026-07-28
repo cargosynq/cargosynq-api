@@ -1,0 +1,21 @@
+info:
+  name: Delete Features
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{shipmentsEndpoint}}/shipments_features/{{shipmentFeatureId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  DELETE /shipments_features/{id}
+  Defined by the cq-backend Shipments module.

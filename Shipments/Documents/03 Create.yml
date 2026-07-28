@@ -1,0 +1,39 @@
+info:
+  name: Create Documents
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{shipmentsEndpoint}}/shipments_documents"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "shipmentsid": {{shipmentId}},
+        "documenttype": "BILL_OF_LADING",
+        "filename": "bol.pdf",
+        "s3bucket": "cargosynq-documents",
+        "s3key": "shipments/{{shipmentId}}/bol.pdf",
+        "filesize": 1024,
+        "mimetype": "application/pdf"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /shipments_documents
+  Defined by the cq-backend Shipments module.

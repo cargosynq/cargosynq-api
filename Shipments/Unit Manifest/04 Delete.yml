@@ -1,0 +1,21 @@
+info:
+  name: Delete Unit Manifest
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{shipmentsEndpoint}}/shipments_units_manifest/{{shipmentUnitManifestId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  DELETE /shipments_units_manifest/{id}
+  Defined by the cq-backend Shipments module.

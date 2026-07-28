@@ -1,0 +1,46 @@
+info:
+  name: Create Units
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{shipmentsEndpoint}}/shipments_units"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "shipmentsid": {{shipmentId}},
+        "ordersunitsid": {{orderUnitId}},
+        "unitnumber": "CONT-001",
+        "unittype": "CONTAINER",
+        "quantity": 1,
+        "weight": 15000,
+        "weightunit": "KG",
+        "volume": 33.2,
+        "volumeunit": "CBM",
+        "length": 1200,
+        "width": 235,
+        "height": 239,
+        "dimensionunit": "CM",
+        "description": "40ft container"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /shipments_units
+  Defined by the cq-backend Shipments module.

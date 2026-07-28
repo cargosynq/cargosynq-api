@@ -1,0 +1,33 @@
+info:
+  name: Update References
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{shipmentsEndpoint}}/shipments_references/{{shipmentReferenceId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "referencevalue": "BOOK-UPDATED"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  PATCH /shipments_references/{id}
+  Defined by the cq-backend Shipments module.

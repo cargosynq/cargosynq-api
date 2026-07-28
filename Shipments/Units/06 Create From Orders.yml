@@ -1,0 +1,50 @@
+info:
+  name: Create From Orders
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{shipmentsEndpoint}}/shipments_units/from-orders"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "orders_units": [
+          {
+            "id": {{orderUnitId}},
+            "shipments_units_references": [
+              {
+                "referencetype": "CUSTOM",
+                "referencevalue": "EXTRA-REF-1"
+              }
+            ],
+            "warehouse_receipts": [
+              {
+                "placesid": {{placeId}},
+                "status": "AVAILABLE",
+                "receivedat": "2026-07-28T10:00:00.000Z"
+              }
+            ]
+          }
+        ]
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /shipments_units/from-orders
+  Defined by the cq-backend Shipments module.

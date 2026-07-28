@@ -205,3 +205,133 @@ variables:
     enabled: true
     secret: false
     type: text
+  - name: shipmentsEndpoint
+    value: https://api-shipments.dev.cargosynq.com
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: targetShipmentId
+    value: "2"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentAccessId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentReferenceId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentBusinessId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentPlaceId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentUnitId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: sourceShipmentUnitId
+    value: "2"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentUnitReferenceId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentUnitDocumentId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentUnitTransferId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentLineItemId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentChargeId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentDocumentId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentRemarkId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentRemarkMentionId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentActivityId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentNeedsAttentionId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentFeatureId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentActionId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: warehouseReceiptId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: warehouseReceiptAccessId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: shipmentUnitManifestId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: originLocationId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: destinationLocationId
+    value: "2"
+    enabled: true
+    secret: false
+    type: text

@@ -1,0 +1,41 @@
+info:
+  name: Create Shipments
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{shipmentsEndpoint}}/shipments"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "shipmentnumber": "SHP-2026-001",
+        "trackingcode": "TRK-ABC123",
+        "status": "PENDING",
+        "mode": "SEA",
+        "incoterms": "FOB",
+        "estimateddeparture": "2026-08-01",
+        "estimatedarrival": "2026-09-01",
+        "originlocationid": {{originLocationId}},
+        "destinationlocationid": {{destinationLocationId}}
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /shipments
+  Defined by the cq-backend Shipments module.

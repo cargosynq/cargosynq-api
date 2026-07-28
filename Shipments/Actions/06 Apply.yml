@@ -1,0 +1,33 @@
+info:
+  name: Apply Actions
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{shipmentsEndpoint}}/shipments_actions/{{shipmentActionId}}/apply"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "applyStrategy": "merge"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /shipments_actions/{id}/apply
+  Defined by the cq-backend Shipments module.

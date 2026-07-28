@@ -1,0 +1,21 @@
+info:
+  name: Get Warehouse Receipts
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{shipmentsEndpoint}}/warehouse_receipts/{{warehouseReceiptId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  GET /warehouse_receipts/{id}
+  Defined by the cq-backend Shipments module.
