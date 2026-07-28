@@ -1,0 +1,33 @@
+info:
+  name: Apply Actions
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{followupEndpoint}}/orders_actions/{{orderActionId}}/apply"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "applyStrategy": "merge"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /orders_actions/{id}/apply
+  Defined by the cq-backend Follow Up/Orders module.

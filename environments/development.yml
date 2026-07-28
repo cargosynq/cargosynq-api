@@ -120,3 +120,88 @@ variables:
     enabled: true
     secret: false
     type: text
+  - name: followupEndpoint
+    value: https://api-followup.dev.cargosynq.com
+    enabled: true
+    secret: false
+    type: text
+  - name: orderId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: lineItemId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderNeedsAttentionId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderAccessId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderActivityId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderReferenceId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderDocumentId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderRemarkId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderRemarkMentionId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderActionId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderFeatureId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderBranchId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderBusinessId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: orderUnitId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: branchId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: businessId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text

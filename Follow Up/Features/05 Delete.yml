@@ -1,0 +1,21 @@
+info:
+  name: Delete Features
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{followupEndpoint}}/orders_features/{{orderFeatureId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  DELETE /orders_features/{id}
+  Defined by the cq-backend Follow Up/Orders module.

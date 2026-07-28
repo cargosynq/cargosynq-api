@@ -1,0 +1,35 @@
+info:
+  name: Create Remark Mentions
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{followupEndpoint}}/orders_remarks_mentions"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "remarksid": {{orderRemarkId}},
+        "mentioneduserid": {{userId}},
+        "mentionedposition": 0
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /orders_remarks_mentions
+  Defined by the cq-backend Follow Up/Orders module.

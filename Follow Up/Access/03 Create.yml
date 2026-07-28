@@ -1,0 +1,37 @@
+info:
+  name: Create Access
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{followupEndpoint}}/orders_access"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "ordersid": {{orderId}},
+        "organizationsid": {{organizationId}},
+        "sharedbyorganizationsid": {{organizationId}},
+        "sharedby": {{userId}},
+        "accesstype": "VIEWER"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /orders_access
+  Defined by the cq-backend Follow Up/Orders module.

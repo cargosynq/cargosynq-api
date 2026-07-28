@@ -1,0 +1,33 @@
+info:
+  name: Update Access
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{followupEndpoint}}/orders_access/{{orderAccessId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "accesstype": "EDITOR"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  PATCH /orders_access/{id}
+  Defined by the cq-backend Follow Up/Orders module.

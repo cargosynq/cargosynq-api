@@ -1,0 +1,21 @@
+info:
+  name: Delete Activities
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{followupEndpoint}}/orders_activities/{{orderActivityId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  DELETE /orders_activities/{id}
+  Defined by the cq-backend Follow Up/Orders module.

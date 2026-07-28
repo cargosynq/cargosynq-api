@@ -1,0 +1,34 @@
+info:
+  name: Update Documents
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{followupEndpoint}}/orders_documents/{{orderDocumentId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "documenttype": "COMMERCIAL_INVOICE",
+        "isdeleted": false
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  PATCH /orders_documents/{id}
+  Defined by the cq-backend Follow Up/Orders module.

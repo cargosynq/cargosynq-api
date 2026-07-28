@@ -1,0 +1,44 @@
+info:
+  name: Create Units
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{followupEndpoint}}/orders_units"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "ordersid": {{orderId}},
+        "unitnumber": "PKG-001",
+        "description": "Pallet 1",
+        "weight": 500,
+        "weightunit": "kg",
+        "length": 120,
+        "width": 80,
+        "height": 100,
+        "dimensionunit": "cm",
+        "packagetype": "PALLET",
+        "trackingcode": "TRACK123",
+        "isdg": false
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /orders_units
+  Defined by the cq-backend Follow Up/Orders module.

@@ -1,0 +1,21 @@
+info:
+  name: Discard Actions
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{followupEndpoint}}/orders_actions/{{orderActionId}}/discard"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /orders_actions/{id}/discard
+  Defined by the cq-backend Follow Up/Orders module.

@@ -1,0 +1,40 @@
+info:
+  name: Create Activities
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{followupEndpoint}}/orders_activities"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "ordersid": {{orderId}},
+        "entitytype": "orders",
+        "entityid": {{orderId}},
+        "actiontype": "UPDATE",
+        "changes": {
+          "followupstatus": "COMPLETED"
+        },
+        "summary": "Updated follow-up status to completed"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /orders_activities
+  Defined by the cq-backend Follow Up/Orders module.

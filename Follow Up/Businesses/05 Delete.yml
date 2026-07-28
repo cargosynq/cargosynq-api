@@ -1,0 +1,21 @@
+info:
+  name: Delete Businesses
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{followupEndpoint}}/orders_businesses/{{orderBusinessId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  DELETE /orders_businesses/{id}
+  Defined by the cq-backend Follow Up/Orders module.

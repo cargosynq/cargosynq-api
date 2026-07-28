@@ -1,0 +1,42 @@
+info:
+  name: Create Documents
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{followupEndpoint}}/orders_documents"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "ordersid": {{orderId}},
+        "originalfilename": "invoice.pdf",
+        "storagebucket": "cargosynq-documents",
+        "storagekey": "orders/{{orderId}}/invoice.pdf",
+        "storageurl": "https://example.invalid/orders/invoice.pdf",
+        "size": 245678,
+        "mimetype": "application/pdf",
+        "md5hash": "5d41402abc4b2a76b9719d911017c592",
+        "isdeleted": false,
+        "documenttype": "INVOICE"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /orders_documents
+  Defined by the cq-backend Follow Up/Orders module.

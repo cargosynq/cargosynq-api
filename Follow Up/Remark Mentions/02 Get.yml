@@ -1,0 +1,21 @@
+info:
+  name: Get Remark Mentions
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{followupEndpoint}}/orders_remarks_mentions/{{orderRemarkMentionId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  GET /orders_remarks_mentions/{id}
+  Defined by the cq-backend Follow Up/Orders module.

@@ -1,0 +1,33 @@
+info:
+  name: Update Needs Attention
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{followupEndpoint}}/orders_needsattentions/{{orderNeedsAttentionId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "status": "completed"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  PATCH /orders_needsattentions/{id}
+  Defined by the cq-backend Follow Up/Orders module.

@@ -1,0 +1,40 @@
+info:
+  name: Create Line Items
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{followupEndpoint}}/lineitems"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "ordersid": {{orderId}},
+        "description": "Widget A",
+        "quantity": 100,
+        "unitofmeasurement": "pcs",
+        "unitcost": 25.5,
+        "currency": "USD",
+        "hscode": "8471.30",
+        "countryoforigin": "CHN"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /lineitems
+  Defined by the cq-backend Follow Up/Orders module.
