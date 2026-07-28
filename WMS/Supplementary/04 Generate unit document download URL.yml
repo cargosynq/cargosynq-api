@@ -1,0 +1,25 @@
+info:
+  name: Generate unit document download URL
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{supplementaryEndpoint}}/wms-units/documents/presigned-url?unitsDocumentId={{unitsDocumentId}}"
+  params:
+    - name: unitsDocumentId
+      value: "{{unitsDocumentId}}"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Generates a pre-signed S3 GET URL for an existing wms_units_documents record.
+  The URL expires after 15 minutes.

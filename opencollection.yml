@@ -1,7 +1,7 @@
 opencollection: 1.0.0
 
 info:
-  name: cargosynq-wms-api-collection
+  name: cargosynq-api
 bundled: false
 extensions:
   bruno:

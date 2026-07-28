@@ -1,0 +1,33 @@
+info:
+  name: Generate unit upload URL
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{supplementaryEndpoint}}/wms-units/presigned-url"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "unitId": "{{unitId}}",
+        "source": "commercial_invoice",
+        "fileName": "commercial-invoice.pdf",
+        "contentType": "application/pdf"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Generates a pre-signed S3 PUT URL for a WMS shipment unit document.
+  The URL expires after 15 minutes.

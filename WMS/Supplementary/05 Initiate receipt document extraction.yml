@@ -1,0 +1,30 @@
+info:
+  name: Initiate receipt document extraction
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{supplementaryEndpoint}}/wms-receipts/documents/extraction/initiate"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "receiptsDocumentId": {{receiptsDocumentId}}
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Queues extraction for an existing WMS receipt document.
+  The 202 response contains progressKey.pk and progressKey.sk for the progress request.

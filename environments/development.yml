@@ -1,1 +1,47 @@
 name: development
+variables:
+  - name: endpoint
+    value: https://api-wms.dev.cargosynq.com
+    enabled: true
+    secret: false
+    type: text
+  - name: supplementaryEndpoint
+    value: https://d72ssgkwi0.execute-api.eu-central-1.amazonaws.com
+    enabled: true
+    secret: false
+    type: text
+  - name: token
+    value: ""
+    enabled: true
+    secret: true
+    type: text
+  - name: receiptId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: unitId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: receiptsDocumentId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: unitsDocumentId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: extractionProgressPk
+    value: DOMAIN#cargosynq
+    enabled: true
+    secret: false
+    type: text
+  - name: extractionProgressSk
+    value: CSID#replace-me#FILEHASH#replace-me
+    enabled: true
+    secret: false
+    type: text

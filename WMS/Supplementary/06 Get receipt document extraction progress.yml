@@ -1,0 +1,32 @@
+info:
+  name: Get receipt document extraction progress
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{supplementaryEndpoint}}/wms-receipts/documents/extraction/progress"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "progressKey": {
+          "pk": "{{extractionProgressPk}}",
+          "sk": "{{extractionProgressSk}}"
+        }
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Reads extraction progress using the key returned by the initiate request.
