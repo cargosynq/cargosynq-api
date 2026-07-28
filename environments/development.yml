@@ -30,16 +30,6 @@ variables:
     enabled: true
     secret: false
     type: text
-  - name: cognitoendpoint
-    value: https://cognito-idp.eu-central-1.amazonaws.com/
-    enabled: true
-    secret: false
-    type: text
-  - name: cognitoClientId
-    value: 3glld83ivetph69pmbpd8bngjd
-    enabled: true
-    secret: false
-    type: text
   - name: receiptId
     value: "1"
     enabled: true

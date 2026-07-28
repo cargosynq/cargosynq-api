@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{cognitoendpoint}}"
+  url: https://cognito-idp.eu-central-1.amazonaws.com/
   headers:
     - name: Content-Type
       value: application/x-amz-json-1.1
@@ -16,7 +16,7 @@ http:
     data: |-
       {
         "AuthFlow": "REFRESH_TOKEN_AUTH",
-        "ClientId": "{{cognitoClientId}}",
+        "ClientId": "3glld83ivetph69pmbpd8bngjd",
         "AuthParameters": {
           "REFRESH_TOKEN": "{{refreshToken}}"
         }
