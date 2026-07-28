@@ -1,0 +1,21 @@
+info:
+  name: Delete Positions
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{endpoint}}/wms_positions/{{positionId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  DELETE /wms_positions/{id}
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

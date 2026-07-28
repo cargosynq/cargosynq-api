@@ -1,0 +1,37 @@
+info:
+  name: Create Unit Access
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{endpoint}}/wms_units_access"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "wmsunitsid": {{unitId}},
+        "organizationsid": {{organizationId}},
+        "sharedbyorganizationsid": {{organizationId}},
+        "sharedby": {{userId}},
+        "accesstype": "READ_WRITE"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /wms_units_access
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

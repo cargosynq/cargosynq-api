@@ -45,3 +45,78 @@ variables:
     enabled: true
     secret: false
     type: text
+  - name: idempotencyKey
+    value: replace-with-uuid
+    enabled: true
+    secret: false
+    type: text
+  - name: placeId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: organizationId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: userId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: positionId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: receiptAccessId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: receiptReferenceId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: receiptActionId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: unitAccessId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: unitReferenceId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: unitActionId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: picklistId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: picklistAccessId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: picklistUnitId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text
+  - name: picklistDocumentId
+    value: "1"
+    enabled: true
+    secret: false
+    type: text

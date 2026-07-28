@@ -1,0 +1,21 @@
+info:
+  name: Delete Receipt Actions
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{endpoint}}/wms_receipts_actions/{{receiptActionId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  DELETE /wms_receipts_actions/{id}
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

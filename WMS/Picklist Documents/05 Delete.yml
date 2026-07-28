@@ -1,0 +1,21 @@
+info:
+  name: Delete Picklist Documents
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{endpoint}}/wms_picklists_documents/{{picklistDocumentId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  DELETE /wms_picklists_documents/{id}
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

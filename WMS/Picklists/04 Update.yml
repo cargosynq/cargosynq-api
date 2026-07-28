@@ -1,0 +1,34 @@
+info:
+  name: Update Picklists
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{endpoint}}/wms_picklists/{{picklistId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "status": "PICKING",
+        "priority": "HIGH"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  PATCH /wms_picklists/{id}
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

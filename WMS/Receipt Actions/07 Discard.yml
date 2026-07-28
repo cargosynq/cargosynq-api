@@ -1,0 +1,21 @@
+info:
+  name: Discard Receipt Actions
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{endpoint}}/wms_receipts_actions/{{receiptActionId}}/discard"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /wms_receipts_actions/{id}/discard
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

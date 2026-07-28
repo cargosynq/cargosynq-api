@@ -1,0 +1,21 @@
+info:
+  name: Delete Picklist Access
+  type: http
+  seq: 3
+
+http:
+  method: DELETE
+  url: "{{endpoint}}/wms_picklists_access/{{picklistAccessId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  DELETE /wms_picklists_access/{id}
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

@@ -1,0 +1,42 @@
+info:
+  name: Create Picklist Documents
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{endpoint}}/wms_picklists_documents"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "wmspicklistsid": {{picklistId}},
+        "originalfilename": "picklist.pdf",
+        "storagebucket": "cargosynq-wms-receipts-documents-dev",
+        "storagekey": "wms-picklists/{{picklistId}}/picklist.pdf",
+        "storageurl": "https://example.invalid/picklist.pdf",
+        "size": 1024,
+        "mimetype": "application/pdf",
+        "md5hash": "replace-with-md5-hash",
+        "isdeleted": false,
+        "documenttype": "PICKLIST"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /wms_picklists_documents
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

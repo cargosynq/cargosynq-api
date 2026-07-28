@@ -1,0 +1,21 @@
+info:
+  name: Delete Unit Actions
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{endpoint}}/wms_units_actions/{{unitActionId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  DELETE /wms_units_actions/{id}
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

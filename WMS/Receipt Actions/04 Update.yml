@@ -1,0 +1,36 @@
+info:
+  name: Update Receipt Actions
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{endpoint}}/wms_receipts_actions/{{receiptActionId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Updated action title",
+        "proposedchanges": {
+          "status": "COMPLETED"
+        }
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  PATCH /wms_receipts_actions/{id}
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

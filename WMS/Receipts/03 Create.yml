@@ -1,0 +1,37 @@
+info:
+  name: Create Receipts
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{endpoint}}/wms_receipts"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "placesid": {{placeId}},
+        "vehicleplate": "AB-123-CD",
+        "drivername": "John Driver",
+        "carrier": "Example Carrier",
+        "notes": "3 pallets, 12 boxes"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /wms_receipts
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

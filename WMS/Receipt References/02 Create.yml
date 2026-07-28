@@ -1,0 +1,35 @@
+info:
+  name: Create Receipt References
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{endpoint}}/wms_receipts_references"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: x-idempotency-key
+      value: "{{idempotencyKey}}"
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "wmsreceiptsid": {{receiptId}},
+        "referencetype": "BARCODE",
+        "referencevalue": "1Z999AA10123456784"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /wms_receipts_references
+  Defined by cq-backend and protected by the WMS Cognito authorizer.

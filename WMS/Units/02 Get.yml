@@ -1,0 +1,21 @@
+info:
+  name: Get Units
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{endpoint}}/wms_units/{{unitId}}"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  GET /wms_units/{id}
+  Defined by cq-backend and protected by the WMS Cognito authorizer.
