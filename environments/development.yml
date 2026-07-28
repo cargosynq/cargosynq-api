@@ -5,7 +5,7 @@ variables:
     enabled: true
     secret: false
     type: text
-  - name: supplementaryEndpoint
+  - name: supplementaryendpoint
     value: https://d72ssgkwi0.execute-api.eu-central-1.amazonaws.com
     enabled: true
     secret: false
@@ -30,7 +30,7 @@ variables:
     enabled: true
     secret: false
     type: text
-  - name: cognitoEndpoint
+  - name: cognitoendpoint
     value: https://cognito-idp.eu-central-1.amazonaws.com/
     enabled: true
     secret: false
@@ -145,7 +145,7 @@ variables:
     enabled: true
     secret: false
     type: text
-  - name: followupEndpoint
+  - name: followupendpoint
     value: https://api-followup.dev.cargosynq.com
     enabled: true
     secret: false
@@ -230,7 +230,7 @@ variables:
     enabled: true
     secret: false
     type: text
-  - name: shipmentsEndpoint
+  - name: shipmentsendpoint
     value: https://api-shipments.dev.cargosynq.com
     enabled: true
     secret: false

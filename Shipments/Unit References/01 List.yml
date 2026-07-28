@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{shipmentsEndpoint}}/shipments_units_references"
+  url: "{{shipmentsendpoint}}/shipments_units_references"
   params:
     - name: limit
       value: "25"

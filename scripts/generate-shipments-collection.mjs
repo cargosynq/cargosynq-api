@@ -219,7 +219,7 @@ function yamlRequest({ name, method, url, body, sequence }) {
 
 http:
   method: ${method}
-  url: "{{shipmentsEndpoint}}${url}"
+  url: "{{shipmentsendpoint}}${url}"
 ${isList ? `  params:
     - name: limit
       value: "25"

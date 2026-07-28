@@ -281,7 +281,7 @@ ${interpolateJson(body)}
 
 http:
   method: ${method}
-  url: "{{followupEndpoint}}/${entity.entity}${suffix}"
+  url: "{{followupendpoint}}/${entity.entity}${suffix}"
 ${params}${headers}${bodyYaml}  auth:
     type: bearer
     token: "{{token}}"

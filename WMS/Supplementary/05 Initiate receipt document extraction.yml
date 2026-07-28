@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{supplementaryEndpoint}}/wms-receipts/documents/extraction/initiate"
+  url: "{{supplementaryendpoint}}/wms-receipts/documents/extraction/initiate"
   headers:
     - name: Content-Type
       value: application/json

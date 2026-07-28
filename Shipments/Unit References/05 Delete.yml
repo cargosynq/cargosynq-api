@@ -5,7 +5,7 @@ info:
 
 http:
   method: DELETE
-  url: "{{shipmentsEndpoint}}/shipments_units_references/{{shipmentUnitReferenceId}}"
+  url: "{{shipmentsendpoint}}/shipments_units_references/{{shipmentUnitReferenceId}}"
   auth:
     type: bearer
     token: "{{token}}"

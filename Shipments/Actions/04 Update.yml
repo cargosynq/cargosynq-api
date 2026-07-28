@@ -5,7 +5,7 @@ info:
 
 http:
   method: PATCH
-  url: "{{shipmentsEndpoint}}/shipments_actions/{{shipmentActionId}}"
+  url: "{{shipmentsendpoint}}/shipments_actions/{{shipmentActionId}}"
   headers:
     - name: Content-Type
       value: application/json

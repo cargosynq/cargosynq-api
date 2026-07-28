@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{supplementaryEndpoint}}/wms-receipts/presigned-url"
+  url: "{{supplementaryendpoint}}/wms-receipts/presigned-url"
   headers:
     - name: Content-Type
       value: application/json

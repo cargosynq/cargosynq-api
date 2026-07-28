@@ -5,7 +5,7 @@ info:
 
 http:
   method: PATCH
-  url: "{{followupEndpoint}}/orders_features/{{orderFeatureId}}"
+  url: "{{followupendpoint}}/orders_features/{{orderFeatureId}}"
   headers:
     - name: Content-Type
       value: application/json

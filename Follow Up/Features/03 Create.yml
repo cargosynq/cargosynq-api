@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{followupEndpoint}}/orders_features"
+  url: "{{followupendpoint}}/orders_features"
   headers:
     - name: Content-Type
       value: application/json

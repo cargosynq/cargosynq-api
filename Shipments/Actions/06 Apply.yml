@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{shipmentsEndpoint}}/shipments_actions/{{shipmentActionId}}/apply"
+  url: "{{shipmentsendpoint}}/shipments_actions/{{shipmentActionId}}/apply"
   headers:
     - name: Content-Type
       value: application/json

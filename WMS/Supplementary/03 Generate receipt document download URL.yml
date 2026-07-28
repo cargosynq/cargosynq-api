@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{supplementaryEndpoint}}/wms-receipts/documents/presigned-url?receiptsDocumentId={{receiptsDocumentId}}"
+  url: "{{supplementaryendpoint}}/wms-receipts/documents/presigned-url?receiptsDocumentId={{receiptsDocumentId}}"
   params:
     - name: receiptsDocumentId
       value: "{{receiptsDocumentId}}"

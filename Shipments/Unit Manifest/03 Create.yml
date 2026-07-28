@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{shipmentsEndpoint}}/shipments_units_manifest"
+  url: "{{shipmentsendpoint}}/shipments_units_manifest"
   headers:
     - name: Content-Type
       value: application/json

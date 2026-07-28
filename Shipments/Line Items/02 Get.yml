@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{shipmentsEndpoint}}/shipments_lineitems/{{shipmentLineItemId}}"
+  url: "{{shipmentsendpoint}}/shipments_lineitems/{{shipmentLineItemId}}"
   auth:
     type: bearer
     token: "{{token}}"

@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{followupEndpoint}}/orders_activities/{{orderActivityId}}"
+  url: "{{followupendpoint}}/orders_activities/{{orderActivityId}}"
   auth:
     type: bearer
     token: "{{token}}"

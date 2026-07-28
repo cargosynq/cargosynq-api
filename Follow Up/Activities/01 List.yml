@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{followupEndpoint}}/orders_activities"
+  url: "{{followupendpoint}}/orders_activities"
   params:
     - name: limit
       value: "25"

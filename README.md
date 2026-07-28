@@ -83,10 +83,10 @@ Service base URLs are also environment variables:
 
 | Variable | Service |
 | --- | --- |
-| `followupEndpoint` | Follow Up / Orders |
-| `shipmentsEndpoint` | Shipments |
+| `followupendpoint` | Follow Up / Orders |
+| `shipmentsendpoint` | Shipments |
 | `endpoint` | WMS |
-| `supplementaryEndpoint` | WMS supplementary API |
+| `supplementaryendpoint` | WMS supplementary API |
 
 ## Run a request
 

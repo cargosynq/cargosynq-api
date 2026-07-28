@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{cognitoEndpoint}}"
+  url: "{{cognitoendpoint}}"
   headers:
     - name: Content-Type
       value: application/x-amz-json-1.1

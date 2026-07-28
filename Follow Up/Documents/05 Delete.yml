@@ -5,7 +5,7 @@ info:
 
 http:
   method: DELETE
-  url: "{{followupEndpoint}}/orders_documents/{{orderDocumentId}}"
+  url: "{{followupendpoint}}/orders_documents/{{orderDocumentId}}"
   auth:
     type: bearer
     token: "{{token}}"
