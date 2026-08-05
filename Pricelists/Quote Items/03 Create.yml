@@ -1,7 +1,7 @@
 info: { name: Create Quote Item, type: http, seq: 3 }
 http:
   method: POST
-  url: "{{pricelistsendpoint}}/quoteitems"
+  url: "{{pricelistsendpoint}}/quotes_items"
   headers:
     - { name: Content-Type, value: application/json }
   body:

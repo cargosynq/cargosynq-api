@@ -143,7 +143,7 @@ variables:
   - name: destinationLocationId
     value: "2"
   - name: pricelistsendpoint
-    value: https://ma7aplww5d.execute-api.eu-central-1.amazonaws.com
+    value: https://api-quotes.dev.cargosynq.com
   - name: pricelistsaiendpoint
     value: https://w4igzp4mma7tpqbhd3rj2lcsc40lxkvk.lambda-url.eu-central-1.on.aws
   - name: pricelistsautoquoteendpoint

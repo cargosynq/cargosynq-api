@@ -1,7 +1,7 @@
 info: { name: Update Quote Item, type: http, seq: 4 }
 http:
   method: PATCH
-  url: "{{pricelistsendpoint}}/quoteitems/{{quoteItemId}}"
+  url: "{{pricelistsendpoint}}/quotes_items/{{quoteItemId}}"
   headers:
     - { name: Content-Type, value: application/json }
   body:

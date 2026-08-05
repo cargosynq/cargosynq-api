@@ -500,7 +500,7 @@
     },
     {
       "name": "pricelistsendpoint",
-      "value": "https://ma7aplww5d.execute-api.eu-central-1.amazonaws.com",
+      "value": "https://api-quotes.dev.cargosynq.com",
       "enabled": true,
       "secret": false,
       "type": "text"
