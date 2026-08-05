@@ -10,9 +10,9 @@ http:
 runtime:
   variables:
     - name: trackingnumber
-      value: ""
+      value: "1544501162"
     - name: destinationcountry
-      value: "DE"
+      value: IT
 
 settings:
   encodeUrl: true
