@@ -1,0 +1,6 @@
+info:
+  name: Supplementary
+  type: folder
+  seq: 4
+
+docs: Shared supplementary functionality used across CargoSynq products.

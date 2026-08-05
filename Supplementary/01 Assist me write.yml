@@ -1,0 +1,46 @@
+info:
+  name: Assist me write
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/assist-me-write"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "entityType": "order",
+        "currentText": "",
+        "currentSubject": "",
+        "prompt": "Write a concise follow-up asking the supplier to confirm the expected readiness date.",
+        "data": {
+          "order": {
+            "id": {{orderId}},
+            "ponumber": "PO-12345",
+            "expectedreadiness": "2026-08-12",
+            "GOODS_SELLER": {
+              "name": "Example Supplier",
+              "email": "supplier@example.com"
+            }
+          }
+        }
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Generates or refines an email using the supplied business context.
+  entityType may be order, shipment, or quote. The prompt and a contextual
+  data object are required; currentText and currentSubject may be empty.
+  Returns subject, HTML content, to, and cc.
