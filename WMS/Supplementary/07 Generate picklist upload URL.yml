@@ -1,0 +1,33 @@
+info:
+  name: Generate picklist upload URL
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{supplementaryendpoint}}/wms-picklists/presigned-url"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "picklistId": "{{picklistId}}",
+        "source": "picklist",
+        "fileName": "picklist.pdf",
+        "contentType": "application/pdf"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Generates a pre-signed S3 PUT URL for a WMS picklist document.
+  The URL expires after 15 minutes.

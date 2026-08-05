@@ -1,0 +1,25 @@
+info:
+  name: Generate picklist document download URL
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{supplementaryendpoint}}/wms-picklists/documents/presigned-url?documentId={{picklistDocumentId}}"
+  params:
+    - name: documentId
+      value: "{{picklistDocumentId}}"
+      type: query
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Generates a pre-signed S3 GET URL for an existing wms_picklists_documents record.
+  The URL expires after 15 minutes.
