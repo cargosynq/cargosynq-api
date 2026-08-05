@@ -1,0 +1,7 @@
+info: { name: Get Quote Version, type: http, seq: 10 }
+http:
+  method: GET
+  url: "{{pricelistsendpoint}}/api/quotes/{{quoteId}}/versions/{{quoteVersion}}"
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: GET /api/quotes/{quoteId}/versions/{versionNo}

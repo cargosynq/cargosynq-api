@@ -1,0 +1,21 @@
+info: { name: Generate Auto Quote, type: http, seq: 1 }
+http:
+  method: POST
+  url: "{{pricelistsautoquoteendpoint}}/api/auto-quote"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "id": "bruno-auto-quote-1",
+        "origins": [
+          { "id": "shipment-1", "origin": "AMS", "weight_kg": 100, "pieces": 1 }
+        ],
+        "destination": "SIN",
+        "requested_by": "bruno",
+        "carrier_overrides": []
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Generates and prices auto-quote scenarios using the long-running function URL.

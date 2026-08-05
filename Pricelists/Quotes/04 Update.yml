@@ -1,0 +1,23 @@
+info: { name: Update Quote, type: http, seq: 4 }
+http:
+  method: PATCH
+  url: "{{pricelistsendpoint}}/api/quotes/{{quoteId}}"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "version": 1,
+        "status": "draft",
+        "customer_name": "Jane Doe",
+        "customer_company": "Example Company",
+        "customer_email": "jane@example.com",
+        "discount": { "type": "none", "value": 0 },
+        "currency": "EUR",
+        "payload": { "source": "bruno" },
+        "items": []
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: PATCH /api/quotes/{quoteId}; replaces the submitted quote draft.

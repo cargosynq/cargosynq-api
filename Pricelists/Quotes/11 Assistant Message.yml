@@ -1,0 +1,16 @@
+info: { name: Quote Assistant Message, type: http, seq: 11 }
+http:
+  method: POST
+  url: "{{pricelistsaiendpoint}}/api/quotes/assistant/message"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "message": "Quote 100 kg from AMS to SIN by air",
+        "carrier_overrides": []
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Long-running quote assistant endpoint hosted on the AI Lambda URL.

@@ -1,0 +1,14 @@
+info: { name: List Rate Cards, type: http, seq: 1 }
+http:
+  method: GET
+  url: "{{pricelistsendpoint}}/api/rate-cards"
+  params:
+    - { name: page, value: "1", type: query }
+    - { name: pageSize, value: "15", type: query }
+    - { name: modality, value: air, type: query, disabled: true }
+    - { name: status, value: active, type: query, disabled: true }
+    - { name: provider, value: "", type: query, disabled: true }
+    - { name: search, value: "", type: query, disabled: true }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: GET /api/rate-cards

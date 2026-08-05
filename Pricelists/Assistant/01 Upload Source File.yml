@@ -1,0 +1,13 @@
+info: { name: Upload Assistant Source File, type: http, seq: 1 }
+http:
+  method: POST
+  url: "{{pricelistsaiendpoint}}/api/assistant/source-file"
+  body:
+    type: multipart-form
+    data:
+      - name: file
+        type: file
+        value: ""
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Uploads a text, CSV, or supported source file for assistant extraction.

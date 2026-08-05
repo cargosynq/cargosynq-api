@@ -1,0 +1,18 @@
+info: { name: Assistant Message, type: http, seq: 2 }
+http:
+  method: POST
+  url: "{{pricelistsaiendpoint}}/api/assistant/message"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "conversation_id": "",
+        "message": "Create airfreight rates from AMS to SIN",
+        "source_text": "",
+        "template": "air-standard"
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Long-running pricelist assistant message endpoint.

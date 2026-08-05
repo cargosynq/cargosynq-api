@@ -8,6 +8,7 @@ This repository contains shared [Bruno](https://www.usebruno.com/) API collectio
 - `Shipments/` — Shipments, units, charges, warehouse receipts, and related entities
 - `WMS/` — Warehouse management endpoints
 - `WMS/Supplementary/` — WMS document upload, download, and extraction endpoints
+- `Pricelists/` — Rate cards, pricing, quotes, uploads, and AI-assisted quoting
 
 The checked-in `development` environment points to the deployed development APIs.
 
@@ -87,6 +88,9 @@ Service base URLs are also environment variables:
 | `shipmentsendpoint` | Shipments |
 | `endpoint` | WMS |
 | `supplementaryendpoint` | WMS supplementary API |
+| `pricelistsendpoint` | Pricelists API Gateway |
+| `pricelistsaiendpoint` | Pricelists long-running AI endpoints |
+| `pricelistsautoquoteendpoint` | Pricelists auto-quote endpoints |
 
 ## Run a request
 

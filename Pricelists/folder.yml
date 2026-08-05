@@ -1,0 +1,6 @@
+info:
+  name: Pricelists
+  type: folder
+  seq: 5
+
+docs: APIs provided by cs-pricelists.

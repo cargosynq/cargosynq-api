@@ -497,6 +497,55 @@
       "enabled": true,
       "secret": false,
       "type": "text"
+    },
+    {
+      "name": "pricelistsendpoint",
+      "value": "https://ma7aplww5d.execute-api.eu-central-1.amazonaws.com",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "pricelistsaiendpoint",
+      "value": "https://w4igzp4mma7tpqbhd3rj2lcsc40lxkvk.lambda-url.eu-central-1.on.aws",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "pricelistsautoquoteendpoint",
+      "value": "https://lxd4fedpr3x4gnjitng74u3bni0fpsgj.lambda-url.eu-central-1.on.aws",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "quoteId",
+      "value": "replace-with-quote-id",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "quoteVersion",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "rateCardVersionId",
+      "value": "replace-with-rate-card-version-id",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "pricelistUploadS3Key",
+      "value": "uploads/replace-with-upload-key/rates.csv",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
     }
   ]
 }

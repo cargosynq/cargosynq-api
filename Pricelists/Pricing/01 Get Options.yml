@@ -1,0 +1,21 @@
+info: { name: Get Pricing Options, type: http, seq: 1 }
+http:
+  method: POST
+  url: "{{pricelistsendpoint}}/api/pricing"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "origin": "AMS",
+        "destination": "SIN",
+        "weight_kg": 100,
+        "modality": "air",
+        "carrier": "",
+        "selected_optional_components": {},
+        "input_multipliers": {}
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: POST /api/pricing

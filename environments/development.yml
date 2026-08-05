@@ -13,7 +13,7 @@ variables:
   - secret: true
     name: refreshToken
   - name: tokenExpiresAt
-    value: ""
+    value: "1785931726505"
   - name: receiptId
     value: "1"
   - name: unitId
@@ -142,3 +142,17 @@ variables:
     value: "1"
   - name: destinationLocationId
     value: "2"
+  - name: pricelistsendpoint
+    value: https://ma7aplww5d.execute-api.eu-central-1.amazonaws.com
+  - name: pricelistsaiendpoint
+    value: https://w4igzp4mma7tpqbhd3rj2lcsc40lxkvk.lambda-url.eu-central-1.on.aws
+  - name: pricelistsautoquoteendpoint
+    value: https://lxd4fedpr3x4gnjitng74u3bni0fpsgj.lambda-url.eu-central-1.on.aws
+  - name: quoteId
+    value: replace-with-quote-id
+  - name: quoteVersion
+    value: "1"
+  - name: rateCardVersionId
+    value: replace-with-rate-card-version-id
+  - name: pricelistUploadS3Key
+    value: uploads/replace-with-upload-key/rates.csv

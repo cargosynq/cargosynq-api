@@ -1,0 +1,10 @@
+info: { name: Finalize Quote, type: http, seq: 6 }
+http:
+  method: POST
+  url: "{{pricelistsendpoint}}/api/quotes/{{quoteId}}/finalize"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body: { type: json, data: "{\n  \"version\": 1\n}" }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Finalizes the quote and records a history snapshot.

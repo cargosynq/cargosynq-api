@@ -1,0 +1,22 @@
+info: { name: Update Rate Card Optionality, type: http, seq: 2 }
+http:
+  method: POST
+  url: "{{pricelistsendpoint}}/api/rate-cards/{{rateCardVersionId}}/optionality"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "overrides": [
+          {
+            "component_code": "FSC",
+            "is_optional": true,
+            "selection_key": "fuel_surcharge",
+            "display_name": "Fuel surcharge"
+          }
+        ]
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: POST /api/rate-cards/{rateCardVersionId}/optionality

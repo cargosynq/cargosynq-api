@@ -1,0 +1,7 @@
+info: { name: Quote Activities, type: http, seq: 9 }
+http:
+  method: GET
+  url: "{{pricelistsendpoint}}/api/quotes/{{quoteId}}/activities"
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: GET /api/quotes/{quoteId}/activities
