@@ -1,0 +1,33 @@
+info:
+  name: Compose follow-up email
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/compose-follow-up-email"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "ordersid": {{orderId}},
+        "reason": "REQUEST_READINESS"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Composes a follow-up email that can be passed directly to POST /send-email.
+  Supply exactly one of ordersid or shipmentsid. Supported reasons are
+  CONFIRM_READINESS and REQUEST_READINESS. When an existing email is found,
+  the most recent one is used to set in-reply-to and references.
