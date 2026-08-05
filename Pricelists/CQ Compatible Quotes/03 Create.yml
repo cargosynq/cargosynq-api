@@ -1,0 +1,21 @@
+info: { name: Create Quote, type: http, seq: 3 }
+http:
+  method: POST
+  url: "{{pricelistsendpoint}}/quotes"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "status": "draft",
+        "customer_name": "Jane Doe",
+        "customer_company": "Example Company",
+        "customer_email": "jane@example.com",
+        "discount": { "type": "none", "value": 0 },
+        "currency": "EUR",
+        "payload": { "source": "bruno-cq-compatible" }
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Creates the parent only. Create lines through /quoteitems.

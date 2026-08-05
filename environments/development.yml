@@ -152,6 +152,8 @@ variables:
     value: replace-with-quote-id
   - name: quoteVersion
     value: "1"
+  - name: quoteItemId
+    value: replace-with-quote-item-id
   - name: rateCardVersionId
     value: replace-with-rate-card-version-id
   - name: pricelistUploadS3Key

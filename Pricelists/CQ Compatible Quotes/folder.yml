@@ -1,0 +1,2 @@
+info: { name: CQ Compatible Quotes, type: folder, seq: 9 }
+docs: Additive resource-style quote API. Quote items are managed separately.

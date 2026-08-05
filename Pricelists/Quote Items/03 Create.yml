@@ -1,0 +1,29 @@
+info: { name: Create Quote Item, type: http, seq: 3 }
+http:
+  method: POST
+  url: "{{pricelistsendpoint}}/quoteitems"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "quote_id": "{{quoteId}}",
+        "line_no": 1,
+        "origin": "AMS",
+        "destination": "SIN",
+        "modality": "air",
+        "carrier": "KL",
+        "weight_kg": 100,
+        "selected_optional_components": {},
+        "component_overrides": {},
+        "priced_breakdown_snapshot": [],
+        "line_total_amount": 250,
+        "currency": "EUR",
+        "input_snapshot": {},
+        "option_snapshot": {},
+        "raw_item": { "source": "bruno" }
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Creates one line and atomically recalculates the parent totals.

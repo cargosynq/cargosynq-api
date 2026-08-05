@@ -534,6 +534,13 @@
       "type": "text"
     },
     {
+      "name": "quoteItemId",
+      "value": "replace-with-quote-item-id",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
       "name": "rateCardVersionId",
       "value": "replace-with-rate-card-version-id",
       "enabled": true,

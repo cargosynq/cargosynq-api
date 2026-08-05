@@ -1,0 +1,17 @@
+info: { name: Update Quote Item, type: http, seq: 4 }
+http:
+  method: PATCH
+  url: "{{pricelistsendpoint}}/quoteitems/{{quoteItemId}}"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "carrier": "SQ",
+        "line_total_amount": 275,
+        "currency": "EUR"
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Partially updates one line and atomically recalculates the parent totals.

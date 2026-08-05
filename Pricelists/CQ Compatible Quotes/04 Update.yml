@@ -1,0 +1,16 @@
+info: { name: Update Quote, type: http, seq: 4 }
+http:
+  method: PATCH
+  url: "{{pricelistsendpoint}}/quotes/{{quoteId}}"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "customer_company": "Updated Company",
+        "discount": { "type": "percent", "value": 5 }
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Partially updates parent fields without replacing quote items.
