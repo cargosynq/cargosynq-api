@@ -10,6 +10,11 @@ variables:
     enabled: true
     secret: false
     type: text
+  - name: supplementaryfunctionalitiesendpoint
+    value: https://supplementary-api.dev.cargosynq.com
+    enabled: true
+    secret: false
+    type: text
   - name: token
     value: ""
     enabled: true
