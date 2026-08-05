@@ -2,356 +2,143 @@ name: development
 variables:
   - name: endpoint
     value: https://api-wms.dev.cargosynq.com
-    enabled: true
-    secret: false
-    type: text
   - name: supplementaryendpoint
     value: https://d72ssgkwi0.execute-api.eu-central-1.amazonaws.com
-    enabled: true
-    secret: false
-    type: text
   - name: supplementaryfunctionalitiesendpoint
     value: https://supplementary-api.dev.cargosynq.com
-    enabled: true
-    secret: false
-    type: text
-  - name: token
-    value: ""
-    enabled: true
-    secret: true
-    type: text
-  - name: idToken
-    value: ""
-    enabled: true
-    secret: true
-    type: text
-  - name: refreshToken
-    value: ""
-    enabled: true
-    secret: true
-    type: text
+  - secret: true
+    name: token
+  - secret: true
+    name: idToken
+  - secret: true
+    name: refreshToken
   - name: tokenExpiresAt
     value: ""
-    enabled: true
-    secret: false
-    type: text
   - name: receiptId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: unitId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: receiptsDocumentId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: unitsDocumentId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: extractionProgressPk
     value: DOMAIN#cargosynq
-    enabled: true
-    secret: false
-    type: text
   - name: extractionProgressSk
     value: CSID#replace-me#FILEHASH#replace-me
-    enabled: true
-    secret: false
-    type: text
   - name: idempotencyKey
     value: replace-with-uuid
-    enabled: true
-    secret: false
-    type: text
   - name: placeId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: organizationId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: userId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: positionId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: receiptAccessId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: receiptReferenceId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: receiptActionId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: unitAccessId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: unitReferenceId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: unitActionId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: picklistId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: picklistAccessId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: picklistUnitId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: picklistDocumentId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: followupendpoint
     value: https://api-followup.dev.cargosynq.com
-    enabled: true
-    secret: false
-    type: text
   - name: orderId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: lineItemId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderNeedsAttentionId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderAccessId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderActivityId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderReferenceId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderDocumentId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderRemarkId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderRemarkMentionId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderActionId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderFeatureId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderBranchId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderBusinessId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: orderUnitId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: branchId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: businessId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentsendpoint
     value: https://api-shipments.dev.cargosynq.com
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: targetShipmentId
     value: "2"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentAccessId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentReferenceId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentBusinessId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentPlaceId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentUnitId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: sourceShipmentUnitId
     value: "2"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentUnitReferenceId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentUnitDocumentId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentUnitTransferId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentLineItemId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentChargeId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentDocumentId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentRemarkId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentRemarkMentionId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentActivityId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentNeedsAttentionId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentFeatureId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentActionId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: warehouseReceiptId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: warehouseReceiptAccessId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: shipmentUnitManifestId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: originLocationId
     value: "1"
-    enabled: true
-    secret: false
-    type: text
   - name: destinationLocationId
     value: "2"
-    enabled: true
-    secret: false
-    type: text
