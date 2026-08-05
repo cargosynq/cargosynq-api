@@ -13,7 +13,7 @@ variables:
   - secret: true
     name: refreshToken
   - name: tokenExpiresAt
-    value: "1785936502370"
+    value: "1785941655792"
   - name: receiptId
     value: "1"
   - name: unitId
@@ -59,7 +59,7 @@ variables:
   - name: followupendpoint
     value: https://api-followup.dev.cargosynq.com
   - name: orderId
-    value: "1"
+    value: "8489"
   - name: lineItemId
     value: "1"
   - name: orderNeedsAttentionId
