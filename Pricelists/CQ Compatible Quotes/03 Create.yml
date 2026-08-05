@@ -18,4 +18,4 @@ http:
       }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Creates the parent only. Create lines through /quoteitems.
+docs: Creates the parent only. Create lines through /quotes_items.
