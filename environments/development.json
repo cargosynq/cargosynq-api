@@ -521,7 +521,14 @@
     },
     {
       "name": "quoteId",
-      "value": "replace-with-quote-id",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "quoteCsid",
+      "value": "replace-with-quote-csid",
       "enabled": true,
       "secret": false,
       "type": "text"
@@ -535,7 +542,7 @@
     },
     {
       "name": "quoteItemId",
-      "value": "replace-with-quote-item-id",
+      "value": "1",
       "enabled": true,
       "secret": false,
       "type": "text"

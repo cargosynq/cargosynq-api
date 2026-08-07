@@ -1,0 +1,37 @@
+info:
+  name: Generate cargo manifest
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/shipments/{{shipmentId}}/documents/generate"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "type": "cargo-manifest"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Queues asynchronous cargo-manifest generation for the shipment and returns 202.
+  Response fields include messageId (the standard cq-ui subscription event ID),
+  jobId (the same value retained as an alias), shipmentId, and type.
+  Subscribe to messageId with the standard cq-ui useSubscription hook. The event
+  status is COMPLETED when shipments_documents creation succeeds and FAILED when
+  rendering, upload, or document registration fails. On completion, recordid is
+  the newly created shipments_documents ID.
+  The generated PDF is uploaded and registered as a CARGO MANIFEST record in
+  shipments_documents.

@@ -4,6 +4,7 @@ http:
   url: "{{pricelistsendpoint}}/quotes"
   headers:
     - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{idempotencyKey}}", disabled: true }
   body:
     type: json
     data: |-
@@ -18,4 +19,4 @@ http:
       }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Creates the parent only. Create lines through /quotes_items.
+docs: Enqueues parent creation and returns 202 with messageId. Create lines through /quotes_items.

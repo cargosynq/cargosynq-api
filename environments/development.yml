@@ -13,7 +13,7 @@ variables:
   - secret: true
     name: refreshToken
   - name: tokenExpiresAt
-    value: "1785941655792"
+    value: "1786019397768"
   - name: receiptId
     value: "1"
   - name: unitId
@@ -59,7 +59,7 @@ variables:
   - name: followupendpoint
     value: https://api-followup.dev.cargosynq.com
   - name: orderId
-    value: "8489"
+    value: "8428"
   - name: lineItemId
     value: "1"
   - name: orderNeedsAttentionId
@@ -93,7 +93,7 @@ variables:
   - name: shipmentsendpoint
     value: https://api-shipments.dev.cargosynq.com
   - name: shipmentId
-    value: "1"
+    value: "1918"
   - name: targetShipmentId
     value: "2"
   - name: shipmentAccessId
@@ -149,11 +149,13 @@ variables:
   - name: pricelistsautoquoteendpoint
     value: https://lxd4fedpr3x4gnjitng74u3bni0fpsgj.lambda-url.eu-central-1.on.aws
   - name: quoteId
-    value: replace-with-quote-id
+    value: "1"
+  - name: quoteCsid
+    value: replace-with-quote-csid
   - name: quoteVersion
     value: "1"
   - name: quoteItemId
-    value: replace-with-quote-item-id
+    value: "1"
   - name: rateCardVersionId
     value: replace-with-rate-card-version-id
   - name: pricelistUploadS3Key

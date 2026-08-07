@@ -4,6 +4,7 @@ http:
   url: "{{pricelistsendpoint}}/quotes_items/{{quoteItemId}}"
   headers:
     - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{idempotencyKey}}", disabled: true }
   body:
     type: json
     data: |-
@@ -14,4 +15,4 @@ http:
       }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Partially updates one line and atomically recalculates the parent totals.
+docs: Enqueues a partial line update and returns 202 with messageId; the worker atomically recalculates parent totals.

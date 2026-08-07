@@ -2,6 +2,8 @@ info: { name: Delete Quote Item, type: http, seq: 5 }
 http:
   method: DELETE
   url: "{{pricelistsendpoint}}/quotes_items/{{quoteItemId}}"
+  headers:
+    - { name: x-idempotency-key, value: "{{idempotencyKey}}", disabled: true }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Deletes one line and atomically recalculates the parent totals.
+docs: Enqueues line deletion and returns 202 with messageId; the worker atomically recalculates parent totals.

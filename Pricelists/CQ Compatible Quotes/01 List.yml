@@ -5,7 +5,8 @@ http:
   headers:
     - { name: Accept, value: application/json }
   params:
-    - { name: select, value: "id,status,version,quotenumber,customer_name,customer_company,customer_email,discount,subtotal_amount,total_amount,currency,payload,quotes_items(id,quote_id,line_no,origin,destination,modality,carrier,weight_kg,line_total_amount,currency),quotes_history(*)", type: query }
+    - { name: select, value: "id,csid,status,version,quotenumber,customer_name,customer_company,customer_email,discount,subtotal_amount,total_amount,currency,payload,quotes_items(id,quote_id,line_no,origin,destination,modality,carrier,weight_kg,line_total_amount,currency),quotes_history(*)", type: query }
+    - { name: csid, value: "eq.{{quoteCsid}}", type: query, disabled: true }
     - { name: status, value: eq.draft, type: query, disabled: true }
     - { name: customer_company, value: "ilike.*cargo*", type: query, disabled: true }
     - { name: order, value: updated_at.desc, type: query }
@@ -13,4 +14,4 @@ http:
     - { name: offset, value: "0", type: query }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Returns a raw array with selectable columns and relations using their table-style names.
+docs: Returns a raw array with selectable columns and relations using their table-style names. Enable csid for exact public-identifier lookup.

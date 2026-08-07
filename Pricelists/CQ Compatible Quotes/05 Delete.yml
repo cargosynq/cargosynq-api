@@ -2,6 +2,8 @@ info: { name: Delete Quote, type: http, seq: 5 }
 http:
   method: DELETE
   url: "{{pricelistsendpoint}}/quotes/{{quoteId}}"
+  headers:
+    - { name: x-idempotency-key, value: "{{idempotencyKey}}", disabled: true }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Deletes a draft quote and its dependent records.
+docs: Enqueues draft quote deletion and returns 202 with messageId.
