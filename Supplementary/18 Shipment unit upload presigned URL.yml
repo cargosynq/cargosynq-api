@@ -1,0 +1,32 @@
+info:
+  name: Shipment unit upload presigned URL
+  type: http
+  seq: 18
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/shipment-unit-upload/presigned-url"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "shipmentUnitId": {{shipmentUnitId}},
+        "fileName": "document.pdf",
+        "contentType": "application/pdf"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /shipment-unit-upload/presigned-url
+  Generates a presigned URL for uploading a document to a shipment unit.

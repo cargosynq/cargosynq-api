@@ -1,0 +1,36 @@
+info:
+  name: Send email
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/send-email"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "to": ["recipient@example.com"],
+        "cc": [],
+        "subject": "Follow-up regarding your order",
+        "html": "<p>Hello, this is a follow-up email.</p>",
+        "inReplyTo": "",
+        "references": ""
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /send-email
+  Sends an email via SES. The body can be constructed manually or by passing
+  the output of POST /compose-follow-up-email directly.

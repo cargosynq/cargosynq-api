@@ -1,0 +1,29 @@
+info:
+  name: Integration messages
+  type: http
+  seq: 24
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/integrations/messages"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "source": "example-integration",
+        "payload": {}
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /integrations/messages
+  Receives an integration message for processing.
+  This endpoint does not require authentication.

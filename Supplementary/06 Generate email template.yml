@@ -1,0 +1,18 @@
+info:
+  name: Generate email template
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{supplementaryfunctionalitiesendpoint}}/generate-email-template"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  GET /generate-email-template
+  Generates an email template. This endpoint does not require authentication.

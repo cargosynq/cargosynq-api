@@ -1,0 +1,19 @@
+info:
+  name: Track shipment
+  type: http
+  seq: 11
+
+http:
+  method: GET
+  url: "{{supplementaryfunctionalitiesendpoint}}/track/{{trackingNumber}}/{{destinationCountry}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  GET /track/{trackingnumber}/{destinationcountry}
+  Retrieves tracking details for a shipment using its tracking number and
+  destination country code. This endpoint does not require authentication.

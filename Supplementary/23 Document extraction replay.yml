@@ -1,0 +1,30 @@
+info:
+  name: Document extraction replay
+  type: http
+  seq: 23
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/documents/extraction/replay"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "businessId": {{businessId}}
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /documents/extraction/replay
+  Replays a business extraction result for reprocessing.

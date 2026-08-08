@@ -1,0 +1,21 @@
+info:
+  name: Load follow-up content
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{supplementaryfunctionalitiesendpoint}}/load-follow-up-content"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  GET /load-follow-up-content
+  Loads follow-up content for composing emails.

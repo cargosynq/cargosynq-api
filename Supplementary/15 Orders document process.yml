@@ -1,0 +1,31 @@
+info:
+  name: Orders document process
+  type: http
+  seq: 15
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/orders-document/process"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "orderId": {{orderId}},
+        "documentId": {{orderDocumentId}}
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /orders-document/process
+  Enqueues an order document for processing.

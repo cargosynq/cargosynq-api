@@ -13,7 +13,7 @@ variables:
   - secret: true
     name: refreshToken
   - name: tokenExpiresAt
-    value: "1786019397768"
+    value: "1786184526133"
   - name: receiptId
     value: "1"
   - name: unitId
@@ -160,3 +160,9 @@ variables:
     value: replace-with-rate-card-version-id
   - name: pricelistUploadS3Key
     value: uploads/replace-with-upload-key/rates.csv
+  - name: embeddingModel
+    value: text
+  - name: trackingNumber
+    value: TRACK123
+  - name: destinationCountry
+    value: DE

@@ -1,0 +1,31 @@
+info:
+  name: Document extraction initiate
+  type: http
+  seq: 22
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/documents/extraction/initiate"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "documentId": {{orderDocumentId}},
+        "entityType": "order"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /documents/extraction/initiate
+  Enqueues a document for data extraction.

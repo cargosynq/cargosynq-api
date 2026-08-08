@@ -1,0 +1,21 @@
+info:
+  name: Load existing emails
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{supplementaryfunctionalitiesendpoint}}/load-existing-emails"
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  GET /load-existing-emails
+  Loads existing email threads related to the current context.

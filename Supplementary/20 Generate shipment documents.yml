@@ -1,7 +1,7 @@
 info:
-  name: Generate cargo manifest
+  name: Generate shipment documents
   type: http
-  seq: 3
+  seq: 20
 
 http:
   method: POST
@@ -26,12 +26,10 @@ settings:
   maxRedirects: 5
 
 docs: |-
-  Queues asynchronous cargo-manifest generation for the shipment and returns 202.
-  Response fields include messageId (the standard cq-ui subscription event ID),
-  jobId (the same value retained as an alias), shipmentId, and type.
-  Subscribe to messageId with the standard cq-ui useSubscription hook. The event
-  status is COMPLETED when shipments_documents creation succeeds and FAILED when
+  POST /shipments/{shipmentId}/documents/generate
+  Queues asynchronous document generation for the shipment and returns 202.
+  Response fields include messageId, jobId, shipmentId, and type. Subscribe to
+  messageId with the standard cq-ui useSubscription hook. The event status is
+  COMPLETED when shipments_documents creation succeeds and FAILED when
   rendering, upload, or document registration fails. On completion, recordid is
   the newly created shipments_documents ID.
-  The generated PDF is uploaded and registered as a CARGO MANIFEST record in
-  shipments_documents.

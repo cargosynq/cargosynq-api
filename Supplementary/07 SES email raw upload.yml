@@ -1,0 +1,30 @@
+info:
+  name: SES email raw upload
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/ses-email-raw/upload"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "rawEmail": ""
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /ses-email-raw/upload
+  Uploads a raw SES email for processing.
