@@ -1,9 +1,10 @@
 info: { name: Create Quote, type: http, seq: 3 }
 http:
   method: POST
-  url: "{{pricelistsendpoint}}/api/quotes"
+  url: "{{pricelistsendpoint}}/quotes"
   headers:
     - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{idempotencyKey}}", disabled: true }
   body:
     type: json
     data: |-
@@ -14,9 +15,8 @@ http:
         "customer_email": "jane@example.com",
         "discount": { "type": "none", "value": 0 },
         "currency": "EUR",
-        "payload": { "source": "bruno" },
-        "items": []
+        "payload": { "source": "bruno-cq-compatible" }
       }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Asynchronously creates a quote and returns a message ID.
+docs: Enqueues parent creation and returns 202 with messageId. Create lines through /quotes_items.

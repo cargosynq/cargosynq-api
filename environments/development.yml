@@ -13,7 +13,7 @@ variables:
   - secret: true
     name: refreshToken
   - name: tokenExpiresAt
-    value: "1786184526133"
+    value: "1786207464145"
   - name: receiptId
     value: "1"
   - name: unitId

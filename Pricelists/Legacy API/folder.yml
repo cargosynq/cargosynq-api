@@ -1,0 +1,8 @@
+info:
+  name: Legacy API
+  type: folder
+  seq: 10
+
+docs: |-
+  Requests using the old /api/ prefix routes. These endpoints still work but
+  the non-prefixed routes are the current standard.

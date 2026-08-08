@@ -1,10 +1,11 @@
 info: { name: Finalize Quote, type: http, seq: 6 }
 http:
   method: POST
-  url: "{{pricelistsendpoint}}/api/quotes/{{quoteId}}/finalize"
+  url: "{{pricelistsendpoint}}/quotes/{{quoteId}}/finalize"
   headers:
     - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{idempotencyKey}}", disabled: true }
   body: { type: json, data: "{\n  \"version\": 1\n}" }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Finalizes the quote and records a history snapshot.
+docs: Enqueues finalization and returns 202 with messageId; completion records a history snapshot.

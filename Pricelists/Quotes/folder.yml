@@ -1,4 +1,2 @@
-info:
-  name: Quotes
-  type: folder
-  seq: 2
+info: { name: Quotes, type: folder, seq: 1 }
+docs: Additive resource-style quote API. Quote items are managed separately.
