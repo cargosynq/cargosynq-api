@@ -13,7 +13,7 @@ variables:
   - secret: true
     name: refreshToken
   - name: tokenExpiresAt
-    value: "1786207464145"
+    value: "1786723547858"
   - name: receiptId
     value: "1"
   - name: unitId
@@ -93,7 +93,7 @@ variables:
   - name: shipmentsendpoint
     value: https://api-shipments.dev.cargosynq.com
   - name: shipmentId
-    value: "1918"
+    value: "1981"
   - name: targetShipmentId
     value: "2"
   - name: shipmentAccessId

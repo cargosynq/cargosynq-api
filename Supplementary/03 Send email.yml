@@ -13,11 +13,13 @@ http:
     type: json
     data: |-
       {
-        "to": ["recipient@example.com"],
-        "cc": [],
+        "to": "recipient@example.com",
+        "cc": "cc@example.com",
         "subject": "Follow-up regarding your order",
-        "html": "<p>Hello, this is a follow-up email.</p>",
-        "inReplyTo": "",
+        "bodyText": "Hello, this is a follow-up email.",
+        "bodyHtml": "<p>Hello, this is a follow-up email.</p>",
+        "csid": "00000000-0000-0000-0000-000000000000",
+        "in-reply-to": "",
         "references": ""
       }
   auth:
