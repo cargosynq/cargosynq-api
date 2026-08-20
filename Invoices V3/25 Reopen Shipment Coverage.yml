@@ -1,0 +1,7 @@
+info: { name: Reopen Shipment Coverage, type: http, seq: 25 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/shipment-coverage-closures/{{coverageClosureId}}/reopen"
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Reopens a manually closed shipment coverage bucket and records the actor and timestamp.

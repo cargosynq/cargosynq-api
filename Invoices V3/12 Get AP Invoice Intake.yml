@@ -1,0 +1,7 @@
+info: { name: Get AP Invoice Intake, type: http, seq: 12 }
+http:
+  method: GET
+  url: "{{invoicesv3endpoint}}/ap-invoice-intakes/{{apInvoiceIntakeId}}"
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Returns an intake with extracted lines and charge-code suggestions.

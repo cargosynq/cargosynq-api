@@ -560,6 +560,62 @@
       "enabled": true,
       "secret": false,
       "type": "text"
+    },
+    {
+      "name": "invoicesv3endpoint",
+      "value": "https://api-invoices-v3.dev.cargosynq.com",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "financialDocumentId",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "financialLineId",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "apInvoiceIntakeId",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "apInvoiceIntakeLineId",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "chargeCodeId",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "invoiceDirection",
+      "value": "AP",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "coverageClosureId",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
     }
   ]
 }

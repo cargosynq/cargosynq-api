@@ -1,0 +1,20 @@
+info: { name: Close Shipment Coverage, type: http, seq: 24 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/shipment-coverage-closures"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "shipmentId": "{{shipmentId}}",
+        "direction": "AP",
+        "currency": "EUR",
+        "reason": "Final vendor invoice accepted below expected cost",
+        "expectedAmount": "100.00",
+        "invoicedAmount": "98.00"
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Manually closes a material AP or AR coverage variance with an audited reason and amount snapshot.

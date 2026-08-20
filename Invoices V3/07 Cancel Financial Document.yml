@@ -1,0 +1,9 @@
+info: { name: Cancel Financial Document, type: http, seq: 7 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/financial-documents/{{financialDocumentId}}/cancel"
+  headers:
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Cancels a financial document and reverses reserved shipment-charge allocations.

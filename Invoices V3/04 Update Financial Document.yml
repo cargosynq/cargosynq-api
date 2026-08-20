@@ -1,0 +1,17 @@
+info: { name: Update Financial Document, type: http, seq: 4 }
+http:
+  method: PATCH
+  url: "{{invoicesv3endpoint}}/financial-documents/{{financialDocumentId}}"
+  headers:
+    - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "documentNumber": "UPDATED-{{$timestamp}}",
+        "dueDate": "2026-09-18"
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Partially updates a financial document.

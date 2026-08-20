@@ -1,0 +1,30 @@
+info: { name: Create Extracted AP Invoice, type: http, seq: 9 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/document-extractions/ap-invoices"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "sourceEventId": "{{$guid}}",
+        "sourceDocumentId": "bruno-{{$timestamp}}",
+        "sourceFileHash": "replace-with-file-hash",
+        "vendorId": "{{businessId}}",
+        "shipmentId": "{{shipmentId}}",
+        "documentNumber": "AP-{{$timestamp}}",
+        "documentDate": "2026-08-19",
+        "dueDate": "2026-09-18",
+        "currency": "EUR",
+        "lines": [{
+          "chargeCodeId": "{{chargeCodeId}}",
+          "description": "Vendor freight charge",
+          "quantity": "1",
+          "unitPrice": "500.00",
+          "taxRate": "0"
+        }]
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Creates an EXTRACTED AP invoice directly from resolved extraction data.

@@ -1,0 +1,36 @@
+info: { name: Create AP Invoice Intake, type: http, seq: 10 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/ap-invoice-intakes"
+  headers:
+    - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "sourceEventId": "{{$guid}}",
+        "sourceDocumentId": "bruno-intake-{{$timestamp}}",
+        "documentType": "INVOICE",
+        "invoiceNumber": "AP-INTAKE-{{$timestamp}}",
+        "invoiceDate": "2026-08-19",
+        "dueDate": "2026-09-18",
+        "currency": "EUR",
+        "vendorName": "Example Vendor",
+        "subtotal": "500.00",
+        "taxTotal": "0.00",
+        "total": "500.00",
+        "lines": [{
+          "description": "Ocean freight",
+          "quantity": "1",
+          "unitPrice": "500.00",
+          "netAmount": "500.00",
+          "taxRate": "0",
+          "taxAmount": "0.00",
+          "grossAmount": "500.00",
+          "chargeCode": "OCEAN_FREIGHT"
+        }]
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Stores extracted AP invoice data for review and resolution.

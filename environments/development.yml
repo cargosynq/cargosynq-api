@@ -166,3 +166,19 @@ variables:
     value: TRACK123
   - name: destinationCountry
     value: DE
+  - name: invoicesv3endpoint
+    value: https://api-invoices-v3.dev.cargosynq.com
+  - name: financialDocumentId
+    value: "1"
+  - name: financialLineId
+    value: "1"
+  - name: apInvoiceIntakeId
+    value: "1"
+  - name: apInvoiceIntakeLineId
+    value: "1"
+  - name: chargeCodeId
+    value: "1"
+  - name: invoiceDirection
+    value: AP
+  - name: coverageClosureId
+    value: "1"

@@ -1,0 +1,9 @@
+info: { name: Post Financial Document, type: http, seq: 8 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/financial-documents/{{financialDocumentId}}/post"
+  headers:
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Posts an approved document and refreshes shipment billing projections.

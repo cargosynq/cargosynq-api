@@ -1,0 +1,21 @@
+info: { name: Preview Line Allocation, type: http, seq: 15 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/financial-lines/{{financialLineId}}/allocations/preview"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "sourceAmount": "100.00",
+        "currency": "EUR",
+        "method": "EQUAL_PER_SHIPMENT",
+        "candidates": [
+          { "shipmentId": "{{shipmentId}}" },
+          { "shipmentId": "{{targetShipmentId}}" }
+        ]
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Calculates an allocation without persisting it.

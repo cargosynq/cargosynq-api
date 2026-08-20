@@ -1,0 +1,29 @@
+info: { name: Create Financial Document, type: http, seq: 2 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/financial-documents"
+  headers:
+    - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "direction": "AR",
+        "documentType": "INVOICE",
+        "clientId": "{{businessId}}",
+        "documentNumber": "AR-{{$timestamp}}",
+        "documentDate": "2026-08-19",
+        "dueDate": "2026-09-18",
+        "currency": "EUR",
+        "lines": [{
+          "chargeCodeId": "{{chargeCodeId}}",
+          "description": "Ocean freight",
+          "quantity": "1",
+          "unitPrice": "1000.00",
+          "taxRate": "0"
+        }]
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Creates a DRAFT AP or AR invoice. Use vendorId for AP and clientId for AR.

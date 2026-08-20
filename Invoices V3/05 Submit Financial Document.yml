@@ -1,0 +1,9 @@
+info: { name: Submit Financial Document, type: http, seq: 5 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/financial-documents/{{financialDocumentId}}/submit"
+  headers:
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Moves a DRAFT or EXTRACTED document to PENDING_APPROVAL.

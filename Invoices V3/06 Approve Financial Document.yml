@@ -1,0 +1,9 @@
+info: { name: Approve Financial Document, type: http, seq: 6 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/financial-documents/{{financialDocumentId}}/approve"
+  headers:
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Approves a PENDING_APPROVAL financial document.

@@ -1,0 +1,6 @@
+info:
+  name: Invoices V3
+  type: folder
+  seq: 6
+
+docs: All HTTP endpoints exposed by cs-invoices-v3.

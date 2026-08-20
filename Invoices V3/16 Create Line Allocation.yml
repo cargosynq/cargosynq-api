@@ -1,0 +1,20 @@
+info: { name: Create Line Allocation, type: http, seq: 16 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/financial-lines/{{financialLineId}}/allocations"
+  headers:
+    - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "sourceAmount": "100.00",
+        "amountToAllocate": "100.00",
+        "currency": "EUR",
+        "method": "DIRECT",
+        "candidates": [{ "shipmentId": "{{shipmentId}}" }]
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Persists an allocation for a financial document line.
