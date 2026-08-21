@@ -1,0 +1,25 @@
+info:
+  name: Match charge taxonomy
+  type: http
+  seq: 28
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/charge-taxonomy/match"
+  auth:
+    type: bearer
+    token: "{{token}}"
+  body:
+    type: json
+    data: |-
+      {
+        "descriptions": ["Air freight charge", "Immediate import customs release"]
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Suggests canonical mappings while returning confidence, method, and review status.

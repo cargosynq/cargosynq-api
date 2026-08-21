@@ -1,0 +1,25 @@
+info:
+  name: Resolve charge taxonomy
+  type: http
+  seq: 27
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/charge-taxonomy/resolve"
+  auth:
+    type: bearer
+    token: "{{token}}"
+  body:
+    type: json
+    data: |-
+      {
+        "values": ["AIR_FREIGHT", "AIRFREIGHT"]
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Resolves canonical codes and known aliases in batches.
