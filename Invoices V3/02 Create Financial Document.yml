@@ -11,19 +11,58 @@ http:
       {
         "direction": "AR",
         "documentType": "INVOICE",
-        "clientId": "{{businessId}}",
+        "clientId": "{{invoiceRecipientEntityId}}",
+        "issuer": {
+          "entityId": "{{invoiceIssuerEntityId}}",
+          "snapshot": {
+            "name": "CargoSynq Example Issuer",
+            "address": "Issuer street 1, Rotterdam, NL",
+            "taxId": "NL000000000B01",
+            "email": "billing@example.invalid",
+            "phone": "+31 00 000 0000"
+          }
+        },
+        "serviceRecipient": {
+          "entityId": "{{invoiceServiceRecipientEntityId}}",
+          "snapshot": {
+            "name": "Example Operational Customer",
+            "address": "Operation street 2, Hamburg, DE",
+            "taxId": "DE000000000"
+          }
+        },
+        "invoiceRecipient": {
+          "entityId": "{{invoiceRecipientEntityId}}",
+          "snapshot": {
+            "name": "Example Invoice Recipient",
+            "address": "Accounts Payable street 3, Antwerp, BE",
+            "taxId": "BE0000000000",
+            "email": "accounts-payable@example.invalid"
+          }
+        },
         "documentNumber": "AR-{{$timestamp}}",
         "documentDate": "2026-08-19",
         "dueDate": "2026-09-18",
         "currency": "EUR",
+        "paymentTerms": "Payment due within 30 days",
+        "notes": "Service performed for the service recipient and invoiced to the invoice recipient.",
         "lines": [{
           "chargeCodeId": "{{chargeCodeId}}",
           "description": "Ocean freight",
           "quantity": "1",
           "unitPrice": "1000.00",
-          "taxRate": "0"
+          "discountRate": "10",
+          "taxRate": "21"
         }]
       }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Creates a DRAFT AP or AR invoice. Use vendorId for AP and clientId for AR.
+docs: |-
+  Creates a DRAFT AP or AR invoice. For AR, clientId remains the debtor/Bill To
+  compatibility reference and must equal invoiceRecipient.entityId. The three
+  explicit roles preserve master-data entity IDs and invoice-time snapshots:
+  issuer (Bill From), serviceRecipient (Operation For), and invoiceRecipient
+  (Bill To). Snapshots can be edited in DRAFT/EXTRACTED and lock after posting.
+
+  Discounts are canonical per line and apply before tax. Send either
+  discountRate or discountAmount on a line, not both. Subtotal, discountTotal,
+  taxTotal, and total are calculated by the server.

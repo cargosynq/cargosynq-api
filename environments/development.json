@@ -611,6 +611,27 @@
       "type": "text"
     },
     {
+      "name": "invoiceIssuerEntityId",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "invoiceServiceRecipientEntityId",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
+      "name": "invoiceRecipientEntityId",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
       "name": "coverageClosureId",
       "value": "1",
       "enabled": true,

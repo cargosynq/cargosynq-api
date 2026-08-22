@@ -180,5 +180,11 @@ variables:
     value: "1"
   - name: invoiceDirection
     value: AP
+  - name: invoiceIssuerEntityId
+    value: "1"
+  - name: invoiceServiceRecipientEntityId
+    value: "1"
+  - name: invoiceRecipientEntityId
+    value: "1"
   - name: coverageClosureId
     value: "1"
