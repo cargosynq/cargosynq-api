@@ -1,7 +1,7 @@
-info: { name: Create Financial Document, type: http, seq: 2 }
+info: { name: Create Invoice, type: http, seq: 2 }
 http:
   method: POST
-  url: "{{invoicesv3endpoint}}/financial-documents"
+  url: "{{invoicesv3endpoint}}/invoices"
   headers:
     - { name: Content-Type, value: application/json }
     - { name: x-idempotency-key, value: "{{$guid}}" }

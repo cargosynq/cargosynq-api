@@ -1,7 +1,7 @@
-info: { name: Post Financial Document, type: http, seq: 8 }
+info: { name: Post Invoice, type: http, seq: 8 }
 http:
   method: POST
-  url: "{{invoicesv3endpoint}}/financial-documents/{{financialDocumentId}}/post"
+  url: "{{invoicesv3endpoint}}/invoices/{{financialDocumentId}}/post"
   headers:
     - { name: x-idempotency-key, value: "{{$guid}}" }
   auth: { type: bearer, token: "{{token}}" }

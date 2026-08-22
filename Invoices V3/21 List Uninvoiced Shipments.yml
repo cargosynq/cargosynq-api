@@ -1,7 +1,19 @@
 info: { name: List Uninvoiced Shipments, type: http, seq: 21 }
 http:
   method: GET
-  url: "{{invoicesv3endpoint}}/uninvoiced-shipments?direction={{invoiceDirection}}"
+  url: "{{invoicesv3endpoint}}/uninvoiced-shipments"
+  params:
+    - { name: direction, value: "eq.{{invoiceDirection}}", type: query, disabled: true }
+    - { name: shipmentNumber, value: search.CS, type: query, disabled: true }
+    - { name: shipmentStatus, value: eq.ACTIVE, type: query, disabled: true }
+    - { name: order, value: shipmentId.desc, type: query, disabled: true }
+    - { name: limit, value: "50", type: query }
+    - { name: offset, value: "0", type: query }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Returns organization-accessible shipments grouped into AP or AR currency coverage buckets, including contributing invoice links and closure state. Omit direction to return both sides.
+docs: |-
+  Returns organization-accessible shipment coverage buckets as a raw JSON
+  array, including contributing invoice links and closure state.
+
+  Enable `direction=eq.AP` or `direction=eq.AR` to select one side. Supports
+  cq-backend filters, shipment-number search, ordering, and limit/offset paging.

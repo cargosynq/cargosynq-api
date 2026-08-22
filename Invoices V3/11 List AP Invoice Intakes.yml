@@ -3,7 +3,34 @@ http:
   method: GET
   url: "{{invoicesv3endpoint}}/ap-invoice-intakes"
   params:
-    - { name: status, value: NEEDS_REVIEW, type: query, disabled: true }
+    - { name: status, value: eq.NEEDS_REVIEW, type: query, disabled: true }
+    - { name: invoiceNumber, value: search.INV, type: query, disabled: true }
+    - { name: vendorName, value: search.WORLD, type: query, disabled: true }
+    - { name: shipmentReference, value: search.SHIPMENT, type: query, disabled: true }
+    - { name: or, value: (invoiceNumber.search.INV,vendorName.search.WORLD), type: query, disabled: true }
+    - { name: order, value: createdAt.desc, type: query, disabled: true }
+    - { name: limit, value: "20", type: query }
+    - { name: offset, value: "0", type: query }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Lists AP invoice extraction intakes; optionally filters by status.
+docs: |-
+  Lists AP invoice extraction intakes as a raw JSON array.
+
+  Supports cq-backend filters, grouped `and`/`or`, relevance search, ordering,
+  and bounded limit/offset pagination. The maximum limit is 100.
+
+  Each item includes `extractedTotal` as a decimal string or `null`. This is
+  the invoice-level total extracted from the source document, not a total
+  recalculated from the current intake lines.
+
+  Example response item:
+
+  ```json
+  {
+    "id": "10",
+    "status": "NEEDS_REVIEW",
+    "invoiceNumber": "INV-10",
+    "currency": "EUR",
+    "extractedTotal": "123.450000"
+  }
+  ```

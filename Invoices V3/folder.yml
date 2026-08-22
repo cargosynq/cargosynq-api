@@ -3,4 +3,11 @@ info:
   type: folder
   seq: 6
 
-docs: All HTTP endpoints exposed by cs-invoices-v3.
+docs: |-
+  All HTTP endpoints exposed by cs-invoices-v3.
+
+  List responses are raw arrays. List endpoints follow cq-backend query
+  conventions: direct filters, `and`/`or`, `order`, `limit`, `offset`, and the
+  `eq`, `neq`, `gt`, `lt`, `gte`, `lte`, `like`, `ilike`, `is`, `search`,
+  `wsim`, and `trgm` operators. Validation errors use
+  `{ "message": "...", "code": "VALIDATION", "details": ... }`.

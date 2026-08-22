@@ -2,6 +2,16 @@ info: { name: List Charge Codes, type: http, seq: 18 }
 http:
   method: GET
   url: "{{invoicesv3endpoint}}/charge-codes"
+  params:
+    - { name: code, value: search.FREIGHT, type: query, disabled: true }
+    - { name: name, value: search.FREIGHT, type: query, disabled: true }
+    - { name: or, value: (code.search.FREIGHT,name.search.FREIGHT), type: query, disabled: true }
+    - { name: order, value: name.rank.FREIGHT, type: query, disabled: true }
+    - { name: limit, value: "20", type: query }
+    - { name: offset, value: "0", type: query }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Lists canonical invoice charge codes available to the organization.
+docs: |-
+  Lists canonical invoice charge codes available to the organization as a raw
+  JSON array. Supports cq-backend filters, trigram-backed search, relevance
+  ordering, and bounded limit/offset pagination.

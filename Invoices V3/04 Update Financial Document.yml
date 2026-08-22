@@ -1,7 +1,7 @@
-info: { name: Update Financial Document, type: http, seq: 4 }
+info: { name: Update Invoice, type: http, seq: 4 }
 http:
   method: PATCH
-  url: "{{invoicesv3endpoint}}/financial-documents/{{financialDocumentId}}"
+  url: "{{invoicesv3endpoint}}/invoices/{{financialDocumentId}}"
   headers:
     - { name: Content-Type, value: application/json }
     - { name: x-idempotency-key, value: "{{$guid}}" }
@@ -14,4 +14,4 @@ http:
       }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Partially updates a financial document.
+docs: Partially updates an invoice.
