@@ -12,15 +12,8 @@ http:
         "documentNumber": "UPDATED-{{$timestamp}}",
         "dueDate": "2026-09-18",
         "invoiceRecipient": {
-          "entityId": "{{invoiceRecipientEntityId}}",
-          "snapshot": {
-            "name": "Updated Invoice Recipient",
-            "address": "Updated billing address",
-            "taxId": "BE0000000000",
-            "email": "accounts-payable@example.invalid"
-          }
+          "entityId": "{{invoiceRecipientEntityId}}"
         },
-        "clientId": "{{invoiceRecipientEntityId}}",
         "paymentTerms": "Payment due within 30 days",
         "notes": "Updated while the invoice is editable."
       }
@@ -30,4 +23,6 @@ docs: |-
   Partially updates a DRAFT or EXTRACTED invoice. Party snapshots, notes, and
   payment terms are editable until workflow immutability applies. To replace
   lines, send the complete lines array; each line may contain discountRate or
-  discountAmount, but not both.
+  discountAmount, but not both. When a party entity changes, the backend
+  refreshes its snapshot from master data unless explicit non-empty snapshot
+  overrides are included.

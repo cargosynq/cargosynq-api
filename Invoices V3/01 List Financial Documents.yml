@@ -10,7 +10,7 @@ http:
     - { name: limit, value: "20", type: query }
     - { name: offset, value: "0", type: query }
     - name: select
-      value: id,documentNumber,status,lines(id,description,allocations(),sourceShipmentCharges()),activities()
+      value: id,documentNumber,status,client(*),lines(*),activities(*)
       type: query
       disabled: true
   auth: { type: bearer, token: "{{token}}" }
@@ -22,5 +22,7 @@ docs: |-
   example `status=eq.APPROVED` and `documentNumber=search.WORLD`.
 
   Enable `select` to fetch the requested document relations in the same call.
-  Parents are paged before lines, allocations, source shipment charges, and
-  activities are batch-loaded.
+  Nested `*` is supported for selectable relations. For AR invoices,
+  `client(*)` resolves the live client from `invoiceRecipient.entityId`; it is
+  null when the relation does not apply. Parents are paged before related data
+  is batch-loaded.

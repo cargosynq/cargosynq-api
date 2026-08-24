@@ -11,33 +11,14 @@ http:
       {
         "direction": "AR",
         "documentType": "INVOICE",
-        "clientId": "{{invoiceRecipientEntityId}}",
         "issuer": {
-          "entityId": "{{invoiceIssuerEntityId}}",
-          "snapshot": {
-            "name": "CargoSynq Example Issuer",
-            "address": "Issuer street 1, Rotterdam, NL",
-            "taxId": "NL000000000B01",
-            "email": "billing@example.invalid",
-            "phone": "+31 00 000 0000"
-          }
+          "entityId": "{{invoiceIssuerEntityId}}"
         },
         "serviceRecipient": {
-          "entityId": "{{invoiceServiceRecipientEntityId}}",
-          "snapshot": {
-            "name": "Example Operational Customer",
-            "address": "Operation street 2, Hamburg, DE",
-            "taxId": "DE000000000"
-          }
+          "entityId": "{{invoiceServiceRecipientEntityId}}"
         },
         "invoiceRecipient": {
-          "entityId": "{{invoiceRecipientEntityId}}",
-          "snapshot": {
-            "name": "Example Invoice Recipient",
-            "address": "Accounts Payable street 3, Antwerp, BE",
-            "taxId": "BE0000000000",
-            "email": "accounts-payable@example.invalid"
-          }
+          "entityId": "{{invoiceRecipientEntityId}}"
         },
         "documentNumber": "AR-{{$timestamp}}",
         "documentDate": "2026-08-19",
@@ -57,11 +38,17 @@ http:
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
 docs: |-
-  Creates a DRAFT AP or AR invoice. For AR, clientId remains the debtor/Bill To
-  compatibility reference and must equal invoiceRecipient.entityId. The three
-  explicit roles preserve master-data entity IDs and invoice-time snapshots:
+  Creates a DRAFT AP or AR invoice. The three explicit roles preserve
+  master-data entity IDs and invoice-time snapshots:
   issuer (Bill From), serviceRecipient (Operation For), and invoiceRecipient
   (Bill To). Snapshots can be edited in DRAFT/EXTRACTED and lock after posting.
+
+  Supplying only `entityId` is sufficient: the backend resolves the available
+  name, address, email, and phone from business master data and stores them in
+  the snapshot. Send non-empty snapshot fields only when an invoice-specific
+  override is required; `taxId` must be supplied explicitly when needed.
+
+  For AP, issuer is the vendor. For AR, invoiceRecipient is the client.
 
   Discounts are canonical per line and apply before tax. Send either
   discountRate or discountAmount on a line, not both. Subtotal, discountTotal,

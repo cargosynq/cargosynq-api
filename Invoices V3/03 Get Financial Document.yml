@@ -5,7 +5,7 @@ http:
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
 docs: |-
-  Returns one invoice with lines, shipment allocations, three AR party roles
+  Returns one invoice with lines, shipment allocations, three party roles
   and their invoice-time snapshots, notes, paymentTerms, and derived totals.
   Lines include baseAmount, discountRate, discountAmount, netAmount, taxAmount,
   and grossAmount. The document includes discountTotal.
