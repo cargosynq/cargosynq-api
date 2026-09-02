@@ -17,4 +17,7 @@ http:
       }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Persists an allocation for a financial document line.
+docs: |-
+  Persists an allocation for a financial document line. Returns HTTP 202 with
+  messageId, the allocation-run resourceId, and status CREATED. Event status
+  progresses through PENDING to COMPLETED or FAILED.

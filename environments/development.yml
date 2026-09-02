@@ -13,7 +13,7 @@ variables:
   - secret: true
     name: refreshToken
   - name: tokenExpiresAt
-    value: "1787477709616"
+    value: "1788098406288"
   - name: receiptId
     value: "1"
   - name: unitId
@@ -171,6 +171,8 @@ variables:
   - name: financialDocumentId
     value: "1"
   - name: financialLineId
+    value: "1"
+  - name: financialLineAllocationId
     value: "1"
   - name: apInvoiceIntakeId
     value: "1"

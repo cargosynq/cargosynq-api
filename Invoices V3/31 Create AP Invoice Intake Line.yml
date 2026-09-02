@@ -1,0 +1,24 @@
+info: { name: Create AP Invoice Intake Line, type: http, seq: 31 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/ap-invoice-intakes/{{apInvoiceIntakeId}}/lines"
+  headers:
+    - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "chargeCodeId": "{{chargeCodeId}}",
+        "description": "Ocean freight",
+        "quantity": "1",
+        "unitPrice": "500.00",
+        "taxRate": "0"
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: |-
+  Creates one line on a NEEDS_REVIEW or READY AP invoice intake.
+  The intake readiness status is refreshed. Returns HTTP 202 with messageId,
+  resourceId, and status CREATED. Event status progresses through PENDING to
+  COMPLETED or FAILED. Retries must reuse the same x-idempotency-key.

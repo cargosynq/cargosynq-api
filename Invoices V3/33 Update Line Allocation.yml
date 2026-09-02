@@ -1,0 +1,20 @@
+info: { name: Update Line Allocation, type: http, seq: 33 }
+http:
+  method: PATCH
+  url: "{{invoicesv3endpoint}}/financial-lines/{{financialLineId}}/allocations/{{financialLineAllocationId}}"
+  headers:
+    - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "method": "CUSTOM_AMOUNT",
+        "candidates": [{ "shipmentId": "{{shipmentId}}", "amount": "100.00" }]
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: |-
+  Updates one confirmed allocation while its financial document is editable.
+  The body is a partial Create Line Allocation request and may contain at most
+  one candidate. Returns an asynchronous UPDATED response.

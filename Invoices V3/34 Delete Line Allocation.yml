@@ -1,0 +1,11 @@
+info: { name: Delete Line Allocation, type: http, seq: 34 }
+http:
+  method: DELETE
+  url: "{{invoicesv3endpoint}}/financial-lines/{{financialLineId}}/allocations/{{financialLineAllocationId}}"
+  headers:
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: |-
+  Deletes one confirmed allocation while its financial document is editable.
+  Returns an asynchronous DELETED response.

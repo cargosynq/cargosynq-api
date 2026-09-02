@@ -1,0 +1,27 @@
+info: { name: Update Financial Document Line, type: http, seq: 30 }
+http:
+  method: PATCH
+  url: "{{invoicesv3endpoint}}/financial-documents/{{financialDocumentId}}/lines/{{financialDocumentLineId}}"
+  headers:
+    - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "chargeCodeId": "{{chargeCodeId}}",
+        "description": "Ocean freight",
+        "quantity": "2",
+        "unitPrice": "250.00",
+        "discountRate": "0",
+        "taxRate": "0"
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: |-
+  Partially updates one line of a DRAFT or EXTRACTED financial document.
+  The line ID, sibling lines, and allocations are preserved. Line amounts and
+  parent totals are recalculated atomically and the document version advances.
+  Returns HTTP 202 with messageId, resourceId, and status UPDATED. Event status
+  progresses through PENDING to COMPLETED or FAILED. The
+  /invoices/{id}/lines/{lineId} alias is supported.

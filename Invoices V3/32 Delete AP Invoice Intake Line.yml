@@ -1,0 +1,13 @@
+info: { name: Delete AP Invoice Intake Line, type: http, seq: 32 }
+http:
+  method: DELETE
+  url: "{{invoicesv3endpoint}}/ap-invoice-intakes/{{apInvoiceIntakeId}}/lines/{{apInvoiceIntakeLineId}}"
+  headers:
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: |-
+  Deletes one line from a NEEDS_REVIEW or READY AP invoice intake. Returns HTTP
+  202 with messageId, resourceId, and status DELETED. Event status progresses
+  through PENDING to COMPLETED or FAILED. Retries must reuse the same
+  x-idempotency-key.

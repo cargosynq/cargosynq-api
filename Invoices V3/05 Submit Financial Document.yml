@@ -6,4 +6,7 @@ http:
     - { name: x-idempotency-key, value: "{{$guid}}" }
   auth: { type: bearer, token: "{{token}}" }
 settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
-docs: Moves a DRAFT or EXTRACTED document to PENDING_APPROVAL.
+docs: |-
+  Moves a DRAFT or EXTRACTED document to PENDING_APPROVAL. Returns HTTP 202
+  with messageId, resourceId, and status SUBMITTED. Event status progresses
+  through PENDING to COMPLETED or FAILED.

@@ -26,3 +26,7 @@ docs: |-
   discountAmount, but not both. When a party entity changes, the backend
   refreshes its snapshot from master data unless explicit non-empty snapshot
   overrides are included.
+
+  Returns `202` with `messageId`, `resourceId`, and status `UPDATED`. The
+  message ID is also the ID of the persisted `financial-document.updated`
+  event, so retry the same command with the same `x-idempotency-key`.
