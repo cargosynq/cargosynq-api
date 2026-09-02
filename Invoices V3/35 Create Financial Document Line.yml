@@ -1,0 +1,25 @@
+info: { name: Create Financial Document Line, type: http, seq: 35 }
+http:
+  method: POST
+  url: "{{invoicesv3endpoint}}/financial-documents/{{financialDocumentId}}/lines"
+  headers:
+    - { name: Content-Type, value: application/json }
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "chargeCodeId": "{{chargeCodeId}}",
+        "description": "Ocean freight",
+        "quantity": "1",
+        "unitPrice": "250.00",
+        "discountRate": "0",
+        "taxRate": "0"
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: |-
+  Adds one line to a DRAFT or EXTRACTED financial document and recalculates its
+  totals atomically. Returns HTTP 202 with messageId, the new line resourceId,
+  and status CREATED. Event status progresses through PENDING to COMPLETED or
+  FAILED. The /invoices/{id}/lines alias is supported.

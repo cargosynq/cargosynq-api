@@ -1,0 +1,14 @@
+info: { name: Delete Financial Document Line, type: http, seq: 36 }
+http:
+  method: DELETE
+  url: "{{invoicesv3endpoint}}/financial-documents/{{financialDocumentId}}/lines/{{financialDocumentLineId}}"
+  headers:
+    - { name: x-idempotency-key, value: "{{$guid}}" }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: |-
+  Deletes one unallocated line from a DRAFT or EXTRACTED financial document and
+  recalculates its totals atomically. Lines with financial allocations cannot be
+  deleted. Returns HTTP 202 with messageId, resourceId, and status DELETED.
+  Event status progresses through PENDING to COMPLETED or FAILED. The
+  /invoices/{id}/lines/{lineId} alias is supported.
