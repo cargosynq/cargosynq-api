@@ -1,0 +1,7 @@
+info:
+  name: GMLSUPPLIER
+  type: folder
+  seq: 2
+
+docs: |-
+  Supplier master table exposed through Oracle REST Data Services.

@@ -1,5 +1,49 @@
 name: development
 variables:
+  - name: mygmlendpoint
+    value: https://ga58993c6d29673-qxt6floljfmy5buu.adb.eu-milan-1.oraclecloudapps.com
+  - name: mygmlGmlpoEndpoint
+    value: https://ga58993c6d29673-qxt6floljfmy5buu.adb.eu-milan-1.oraclecloudapps.com/ords/gmlcloud2/gmlpo
+  - name: gmlpoId
+    value: "156239"
+  - name: gmlpoRef
+    value: 4100022950-TEST-1790631743334-491
+  - name: mygmlGmlsupplierEndpoint
+    value: https://ga58993c6d29673-qxt6floljfmy5buu.adb.eu-milan-1.oraclecloudapps.com/ords/gmlcloud2/gmlsupplier
+  - name: gmlsupplierId
+    value: "251834"
+  - name: gmlsupplierName
+    value: JNE Marine Ltd
+  - name: gmlsupplierTraderType
+    value: Supplier
+  - name: mygmlGmlvesselEndpoint
+    value: https://ga58993c6d29673-qxt6floljfmy5buu.adb.eu-milan-1.oraclecloudapps.com/ords/gmlcloud2/gmlvessel
+  - name: gmlvesselId
+    value: "287994"
+  - name: gmlvesselName
+    value: Maran Gas Posidonia
+  - name: mygmlGmlpacksEndpoint
+    value: https://ga58993c6d29673-qxt6floljfmy5buu.adb.eu-milan-1.oraclecloudapps.com/ords/gmlcloud2/gmlpacks
+  - name: gmlpacksId
+    value: "728"
+  - name: gmlpacksPurchaseOrderId
+    value: "4"
+  - name: mygmlApexalertsDetailsEndpoint
+    value: https://ga58993c6d29673-qxt6floljfmy5buu.adb.eu-milan-1.oraclecloudapps.com/ords/gmlcloud2/apexalerts_details
+  - name: apexalertsDetailsId
+    value: "7052547"
+  - name: apexalertsDetailsPurchaseOrderId
+    value: "156230"
+  - name: apexalertsDetailsBody
+    value: AutoLoaded
+  - name: apexalertsDetailsUser
+    value: replace-with-user
+  - name: apexalertsDetailsMimeType
+    value: application/pdf
+  - name: apexalertsDetailsFilename
+    value: replace-with-filename
+  - name: apexalertsDetailsBlobBase64
+    value: replace-with-base64-content
   - name: endpoint
     value: https://api-wms.dev.cargosynq.com
   - name: supplementaryendpoint
@@ -13,7 +57,7 @@ variables:
   - secret: true
     name: refreshToken
   - name: tokenExpiresAt
-    value: "1788428399570"
+    value: "1791816874919"
   - name: receiptId
     value: "1"
   - name: unitId
@@ -59,7 +103,7 @@ variables:
   - name: followupendpoint
     value: https://api-followup.dev.cargosynq.com
   - name: orderId
-    value: "8428"
+    value: "8556"
   - name: lineItemId
     value: "1"
   - name: orderNeedsAttentionId

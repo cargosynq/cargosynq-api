@@ -1,0 +1,8 @@
+info:
+  name: APEXALERTS_DETAILS
+  type: folder
+  seq: 5
+
+docs: |-
+  Alert attachment details exposed through Oracle REST Data Services.
+  Responses can contain large base64-encoded values in ad_blob.

@@ -1,0 +1,7 @@
+info:
+  name: GMLPACKS
+  type: folder
+  seq: 4
+
+docs: |-
+  Purchase-order package records exposed through Oracle REST Data Services.

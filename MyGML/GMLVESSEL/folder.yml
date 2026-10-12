@@ -1,0 +1,7 @@
+info:
+  name: GMLVESSEL
+  type: folder
+  seq: 3
+
+docs: |-
+  Vessel master table exposed through Oracle REST Data Services.

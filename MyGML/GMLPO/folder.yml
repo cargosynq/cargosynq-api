@@ -1,0 +1,7 @@
+info:
+  name: GMLPO
+  type: folder
+  seq: 1
+
+docs: |-
+  Purchase-order table exposed through Oracle REST Data Services.

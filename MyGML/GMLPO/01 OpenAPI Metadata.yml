@@ -1,0 +1,18 @@
+info:
+  name: OpenAPI Metadata
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{mygmlendpoint}}/ords/gmlcloud2/open-api-catalog/gmlpo/"
+  auth: none
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Returns the ORDS-generated OpenAPI 3 metadata for GMLPO.

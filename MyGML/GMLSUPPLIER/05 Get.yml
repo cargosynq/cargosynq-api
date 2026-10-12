@@ -1,0 +1,18 @@
+info:
+  name: Get GMLSUPPLIER Record
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{mygmlGmlsupplierEndpoint}}/{{gmlsupplierId}}"
+  auth: none
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Gets one GMLSUPPLIER record by its su_sequ primary key.

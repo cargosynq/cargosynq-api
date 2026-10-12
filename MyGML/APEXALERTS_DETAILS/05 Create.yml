@@ -1,0 +1,72 @@
+info:
+  name: Create APEXALERTS_DETAILS Record
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{mygmlApexalertsDetailsEndpoint}}/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "ad_body": "{{apexalertsDetailsBody}}",
+        "ad_user": "{{apexalertsDetailsUser}}",
+        "ad_blob": "{{apexalertsDetailsBlobBase64}}",
+        "ad_mimetype": "{{apexalertsDetailsMimeType}}",
+        "ad_filename": "{{apexalertsDetailsFilename}}",
+        "ad_aforapo": {{apexalertsDetailsPurchaseOrderId}}
+      }
+  auth: none
+
+runtime:
+  scripts:
+    - type: before-request
+      code: |-
+        const blob = String(
+          bru.getEnvVar("apexalertsDetailsBlobBase64") || ""
+        ).trim();
+        const filename = String(
+          bru.getEnvVar("apexalertsDetailsFilename") || ""
+        ).trim();
+        const purchaseOrderId = String(
+          bru.getEnvVar("apexalertsDetailsPurchaseOrderId") || ""
+        ).trim();
+
+        if (!/^\d+$/.test(purchaseOrderId)) {
+          throw new Error(
+            "apexalertsDetailsPurchaseOrderId must be a numeric po_sequ value"
+          );
+        }
+        if (!filename || filename === "replace-with-filename") {
+          throw new Error("Set apexalertsDetailsFilename before creating a record");
+        }
+        if (!blob || blob === "replace-with-base64-content") {
+          throw new Error(
+            "Set apexalertsDetailsBlobBase64 before creating a record"
+          );
+        }
+    - type: after-response
+      code: |-
+        const created = res.getBody();
+        if (!created || typeof created !== "object" || !created.ad_sequ) {
+          throw new Error(
+            "APEXALERTS_DETAILS create response did not contain ad_sequ"
+          );
+        }
+        bru.setEnvVar("apexalertsDetailsId", String(created.ad_sequ));
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Creates an attachment-detail record. ad_sequ is omitted so ORDS can generate it.
+  Set the filename, MIME type, user, body label, purchase-order ID, and base64 blob
+  environment values before sending. The guard rejects placeholder blob data.
+  A successful response stores its ad_sequ in apexalertsDetailsId.

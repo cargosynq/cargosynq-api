@@ -1,0 +1,27 @@
+info:
+  name: Set GMLPO PO Head
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{mygmlGmlpoEndpoint}}/{{gmlpoId}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {{gmlpoPutPayload}}
+  auth: none
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Sets po_pohead to the generated po_sequ while preserving every value returned by Create.
+  Run Create immediately before this request; it prepares gmlpoPutPayload in memory.
+  Do not replace this with a partial PUT because ORDS clears omitted columns.

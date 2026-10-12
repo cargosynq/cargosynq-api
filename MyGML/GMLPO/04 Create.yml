@@ -1,0 +1,44 @@
+info:
+  name: Create GMLPO Record
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{mygmlGmlpoEndpoint}}/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "po_ref": "{{gmlpoRef}}",
+        "po_dcod": "*"
+      }
+  auth: none
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        const created = res.getBody();
+        if (!created || typeof created !== "object" || !created.po_sequ) {
+          throw new Error("GMLPO create response did not contain po_sequ");
+        }
+        const { links, ...values } = created;
+        bru.setEnvVar("gmlpoId", String(values.po_sequ));
+        bru.setEnvVar(
+          "gmlpoPutPayload",
+          JSON.stringify({ ...values, po_pohead: values.po_sequ }, null, 2)
+        );
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Creates a GMLPO record with the payload containing the known mandatory fields.
+  po_sequ is omitted so MyGML can generate the primary key.

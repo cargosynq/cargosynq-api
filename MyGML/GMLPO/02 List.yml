@@ -1,0 +1,23 @@
+info:
+  name: List GMLPO Records
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{mygmlGmlpoEndpoint}}/"
+  params:
+    - name: q
+      value: '{"po_ref":"{{gmlpoRef}}"}'
+      type: query
+      disabled: true
+  auth: none
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Lists GMLPO records. Enable q to filter using ORDS query-by-example syntax.

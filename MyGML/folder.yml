@@ -1,0 +1,7 @@
+info:
+  name: MyGML
+  type: folder
+  seq: 7
+
+docs: |-
+  Oracle REST Data Services endpoints exposed by MyGML.
