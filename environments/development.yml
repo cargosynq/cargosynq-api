@@ -57,7 +57,7 @@ variables:
   - secret: true
     name: refreshToken
   - name: tokenExpiresAt
-    value: "1791816874919"
+    value: "1792695184405"
   - name: receiptId
     value: "1"
   - name: unitId
@@ -192,6 +192,8 @@ variables:
     value: https://w4igzp4mma7tpqbhd3rj2lcsc40lxkvk.lambda-url.eu-central-1.on.aws
   - name: pricelistsautoquoteendpoint
     value: https://lxd4fedpr3x4gnjitng74u3bni0fpsgj.lambda-url.eu-central-1.on.aws
+  - name: pricelistsV2Endpoint
+    value: https://pricelists-v2.dev.cargosynq.com
   - name: quoteId
     value: "1"
   - name: quoteCsid

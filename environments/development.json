@@ -520,6 +520,13 @@
       "type": "text"
     },
     {
+      "name": "pricelistsV2Endpoint",
+      "value": "https://pricelists-v2.dev.cargosynq.com",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
       "name": "quoteId",
       "value": "1",
       "enabled": true,

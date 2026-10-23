@@ -1,0 +1,3 @@
+info: { name: V2 Smoke Tests, type: folder, seq: 5 }
+
+docs: Smoke tests for the deployed cs-pricelists-v2 API. Run Authentication/Login before authenticated requests.

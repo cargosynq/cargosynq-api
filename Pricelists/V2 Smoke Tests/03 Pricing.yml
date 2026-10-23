@@ -1,0 +1,22 @@
+info: { name: Pricing, type: http, seq: 3 }
+http:
+  method: POST
+  url: "{{pricelistsV2Endpoint}}/api/v2/pricing"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "origin": "AMS",
+        "destination": "SIN",
+        "weight_kg": 100,
+        "pieces": 1,
+        "modality": "air",
+        "perspective": "public",
+        "on_date": "2026-10-22",
+        "explain": true
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Prices an AMS to SIN shipment through the V2 engine. Run Authentication/Login first.

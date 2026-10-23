@@ -1,0 +1,22 @@
+info: { name: Carrier Alternatives, type: http, seq: 5 }
+http:
+  method: POST
+  url: "{{pricelistsV2Endpoint}}/api/v2/auto-quote/carrier-alternatives"
+  headers:
+    - { name: Content-Type, value: application/json }
+  body:
+    type: json
+    data: |-
+      {
+        "id": "smoke-test-1",
+        "origins": [
+          { "id": "cargo-1", "origin": "AMS", "weight_kg": 100, "pieces": 1 }
+        ],
+        "destination": "SIN",
+        "requested_at": "2026-10-22",
+        "reporting_currency": "EUR",
+        "perspective": "public"
+      }
+  auth: { type: bearer, token: "{{token}}" }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: Returns V2 carrier alternatives for AMS to SIN. Run Authentication/Login first.
