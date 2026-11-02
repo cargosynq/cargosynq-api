@@ -1,0 +1,32 @@
+info:
+  name: Record email classification feedback
+  type: http
+  seq: 32
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/email-classifications/{{emailClassificationId}}/feedback"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "is_accepted": false,
+        "selected_category": "booking"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /email-classifications/{id}/feedback
+  Records whether the user accepted a classification suggestion. When rejected,
+  selected_category is required and must contain the category selected by the user.

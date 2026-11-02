@@ -50,6 +50,8 @@ variables:
     value: https://d72ssgkwi0.execute-api.eu-central-1.amazonaws.com
   - name: supplementaryfunctionalitiesendpoint
     value: https://supplementary-api.dev.cargosynq.com
+  - name: emailClassificationId
+    value: "1"
   - secret: true
     name: token
   - secret: true

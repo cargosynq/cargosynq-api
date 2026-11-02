@@ -1,0 +1,32 @@
+info:
+  name: Classify email
+  type: http
+  seq: 31
+
+http:
+  method: POST
+  url: "{{supplementaryfunctionalitiesendpoint}}/email-classifications"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "email_context": "Good Day, We hereby place our purchase order, as per attached. Awaiting your order confirmation. Thanking you in advance."
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  POST /email-classifications
+  Classifies the primary intent of an email using the server-side logistics
+  taxonomy. Returns a numeric classification id, the provider model, suggested
+  category, confidence, and probabilities. The email context is not persisted.

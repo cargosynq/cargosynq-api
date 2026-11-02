@@ -23,6 +23,13 @@
       "type": "text"
     },
     {
+      "name": "emailClassificationId",
+      "value": "1",
+      "enabled": true,
+      "secret": false,
+      "type": "text"
+    },
+    {
       "name": "token",
       "value": "",
       "enabled": true,
