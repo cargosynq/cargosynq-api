@@ -1,0 +1,2 @@
+info: { name: Topics, type: folder, seq: 1 }
+docs: Topic lifecycle operations for the authenticated assistant user.

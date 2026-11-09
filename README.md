@@ -10,6 +10,7 @@ This repository contains shared [Bruno](https://www.usebruno.com/) API collectio
 - `WMS/Supplementary/` — WMS document upload, download, and extraction endpoints
 - `Pricelists/` — Rate cards, pricing, quotes, uploads, and AI-assisted quoting
 - `Invoices V3/` — AP/AR financial documents, invoice intake, allocation, billing coverage, and profitability
+- `Assistant/` — Assistant topics, messages, and attachment-status operations
 
 The checked-in `development` environment points to the deployed development APIs.
 
@@ -93,6 +94,7 @@ Service base URLs are also environment variables:
 | `pricelistsaiendpoint` | Pricelists long-running AI endpoints |
 | `pricelistsautoquoteendpoint` | Pricelists auto-quote endpoints |
 | `invoicesv3endpoint` | Invoices V3 API |
+| `agentGraphqlEndpoint` | CargoSynq Assistant AppSync API |
 
 ## Run a request
 
@@ -135,6 +137,7 @@ cargosynq-api/
 ├── environments/
 │   └── development.yml
 ├── Authentication/
+├── Assistant/
 ├── Follow Up/
 ├── Shipments/
 ├── WMS/

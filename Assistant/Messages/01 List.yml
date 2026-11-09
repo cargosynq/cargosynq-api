@@ -1,0 +1,14 @@
+info: { name: List Messages, type: http, seq: 1 }
+http:
+  method: POST
+  url: "{{agentGraphqlEndpoint}}"
+  headers: [{ name: Content-Type, value: application/json }]
+  auth: { type: bearer, token: "{{token}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "query": "query ListMessages($topicid: String!, $limit: Int) { listMessages(topicid: $topicid, limit: $limit) { topicid userid timestamp message toolcall tool_processing sessionid } }",
+        "variables": { "topicid": "{{agentTopicId}}", "limit": 50 }
+      }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }

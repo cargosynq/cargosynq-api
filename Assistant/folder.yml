@@ -1,0 +1,13 @@
+info:
+  name: Assistant
+  type: folder
+  seq: 7
+
+docs: |-
+  Cognito-authenticated cargosynq-agent AppSync operations.
+
+  Topic rename and deletion are tracked by
+  https://cargosynq.atlassian.net/browse/SCRUM-859.
+
+  IAM-only service mutations and AppSync WebSocket subscriptions are not
+  executable as bearer-token HTTP requests in this collection.

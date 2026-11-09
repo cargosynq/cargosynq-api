@@ -1,0 +1,14 @@
+info: { name: Create Message, type: http, seq: 3 }
+http:
+  method: POST
+  url: "{{agentGraphqlEndpoint}}"
+  headers: [{ name: Content-Type, value: application/json }]
+  auth: { type: bearer, token: "{{token}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "query": "mutation CreateMessage($input: CreateMessageInput!) { createMessage(input: $input) { topicid userid timestamp message toolcall tool_processing sessionid } }",
+        "variables": { "input": { "topicid": "{{agentTopicId}}", "message": "{\"role\":\"user\",\"content\":\"Summarize communications\"}", "toolcall": false } }
+      }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }

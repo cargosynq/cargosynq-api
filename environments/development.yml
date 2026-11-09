@@ -238,3 +238,11 @@ variables:
     value: "1"
   - name: coverageClosureId
     value: "1"
+  - name: agentGraphqlEndpoint
+    value: https://api-agent.dev.cargosynq.com/graphql
+  - name: agentTopicId
+    value: replace-with-topic-uuid
+  - name: agentTopicTitle
+    value: Order Creation Guide
+  - name: agentMessageTimestamp
+    value: replace-with-message-timestamp

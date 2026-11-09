@@ -1,0 +1,14 @@
+info: { name: List Attachment Statuses, type: http, seq: 1 }
+http:
+  method: POST
+  url: "{{agentGraphqlEndpoint}}"
+  headers: [{ name: Content-Type, value: application/json }]
+  auth: { type: bearer, token: "{{token}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "query": "query ListAttachmentStatuses($topicid: String!, $limit: Int) { listAttachmentStatuses(topicid: $topicid, limit: $limit) { attachmentid userid topicid status filename failureCode updatedat statusOrder } }",
+        "variables": { "topicid": "{{agentTopicId}}", "limit": 50 }
+      }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }

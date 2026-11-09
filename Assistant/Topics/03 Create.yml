@@ -1,0 +1,14 @@
+info: { name: Create Topic, type: http, seq: 3 }
+http:
+  method: POST
+  url: "{{agentGraphqlEndpoint}}"
+  headers: [{ name: Content-Type, value: application/json }]
+  auth: { type: bearer, token: "{{token}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "query": "mutation CreateTopic($input: CreateTopicInput!) { createTopic(input: $input) { topicid userid title createdat lastmessageat pinned } }",
+        "variables": { "input": { "topicid": "{{agentTopicId}}", "title": "{{agentTopicTitle}}" } }
+      }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }

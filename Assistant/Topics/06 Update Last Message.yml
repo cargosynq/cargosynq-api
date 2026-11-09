@@ -1,0 +1,14 @@
+info: { name: Update Topic Last Message, type: http, seq: 6 }
+http:
+  method: POST
+  url: "{{agentGraphqlEndpoint}}"
+  headers: [{ name: Content-Type, value: application/json }]
+  auth: { type: bearer, token: "{{token}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "query": "mutation UpdateTopicLastMessage($topicid: String!) { updateTopicLastMessage(topicid: $topicid) { topicid userid title lastmessageat pinned } }",
+        "variables": { "topicid": "{{agentTopicId}}" }
+      }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }

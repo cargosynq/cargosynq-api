@@ -1,0 +1,14 @@
+info: { name: Get Message, type: http, seq: 2 }
+http:
+  method: POST
+  url: "{{agentGraphqlEndpoint}}"
+  headers: [{ name: Content-Type, value: application/json }]
+  auth: { type: bearer, token: "{{token}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "query": "query GetMessage($topicid: String!, $timestamp: String!) { getMessage(topicid: $topicid, timestamp: $timestamp) { topicid userid timestamp message toolcall tool_processing sessionid } }",
+        "variables": { "topicid": "{{agentTopicId}}", "timestamp": "{{agentMessageTimestamp}}" }
+      }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }

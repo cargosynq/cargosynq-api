@@ -1,0 +1,14 @@
+info: { name: List Topics, type: http, seq: 1 }
+http:
+  method: POST
+  url: "{{agentGraphqlEndpoint}}"
+  headers: [{ name: Content-Type, value: application/json }]
+  auth: { type: bearer, token: "{{token}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "query": "query ListTopics($limit: Int) { listTopics(limit: $limit) { topicid userid title createdat lastmessageat pinned } }",
+        "variables": { "limit": 50 }
+      }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }

@@ -1,0 +1,17 @@
+info: { name: Rename Topic, type: http, seq: 4 }
+http:
+  method: POST
+  url: "{{agentGraphqlEndpoint}}"
+  headers: [{ name: Content-Type, value: application/json }]
+  auth: { type: bearer, token: "{{token}}" }
+  body:
+    type: json
+    data: |-
+      {
+        "query": "mutation RenameTopic($input: UpdateTopicInput!) { updateTopic(input: $input) { topicid userid title createdat lastmessageat pinned } }",
+        "variables": { "input": { "topicid": "{{agentTopicId}}", "title": "{{agentTopicTitle}}" } }
+      }
+settings: { encodeUrl: true, timeout: 0, followRedirects: true, maxRedirects: 5 }
+docs: |-
+  Renames a topic owned by the authenticated user.
+  Jira: https://cargosynq.atlassian.net/browse/SCRUM-859
